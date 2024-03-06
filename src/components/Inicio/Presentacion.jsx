@@ -1,33 +1,45 @@
-import { useState, useEffect } from 'react';
-import { styled } from 'styled-components';
+import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import Section from '../Section';
 import Foto1 from '../../assets/img/Foto1.jpg';
-import Foto2 from '../../assets/img/Foto2.jpg';
 import { greenSacimex, whiteSacimex, label, smaLength1, smaLength2, smaLength3, medLength1, medLength2 } from '../../utils/stylesRules';
 
 const Presentacion = () => {
-  const [imagenActual, setImagenActual] = useState(1);
+  return <AnimacionEntradaBoton />;
+};
+
+const AnimacionEntradaBoton = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const targetRef = useRef(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setImagenActual((prevValue) => {
-        if(prevValue === 2) return 1;
-        else return 2;
-      });
-    }, 5000);
-    return () => clearInterval(interval);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.unobserve(entry.target);
+      }
+    });
+
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+
+    return () => {
+      if (targetRef.current) {
+        observer.unobserve(targetRef.current);
+      }
+    };
   }, []);
 
-  return(
+  return (
     <Section presentation>
       <PrincipalContainer>
-        {imagenActual === 1 && (<ImagePresentation/>)}
-        {imagenActual === 2 && (<ImagePresentation2/>)}        
-        <TextsContainer>
+        <ImagePresentation $visible={isVisible} ref={targetRef} />
+        <TextsContainer $visible={isVisible} ref={targetRef}>
           <StyledH1>Opciones Sacimex.</StyledH1>
           <StyledH2>Tu crédito de confianza.</StyledH2>
-        </TextsContainer> 
-      </PrincipalContainer>      
+        </TextsContainer>
+      </PrincipalContainer>
     </Section>
   );
 };
@@ -46,7 +58,7 @@ const PrincipalContainer = styled.div`
 
   @media (min-width: 650px) {
     gap: 0;
-  };
+  }
 `;
 
 const ImagePresentation = styled.div`
@@ -57,26 +69,14 @@ const ImagePresentation = styled.div`
   clip-path: circle(115% at 0 0);
   height: 350px;
   max-width: 500px;
+  opacity: ${({ $visible }) => ($visible ? '1' : '0')};
+  transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
+  transition: opacity 2s, transform 2s;
   width: 100%;
 
   @media (min-width: 650px) {
     width: 50%;
-  };
-`;
-
-const ImagePresentation2 = styled.div`
-  background-image: url(${Foto2});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  clip-path: circle(115% at 0 0);
-  height: 350px;
-  max-width: 500px;
-  width: 100%;
-
-  @media (min-width: 650px) {
-    width: 50%;
-  };
+  }
 `;
 
 const TextsContainer = styled.div`
@@ -85,11 +85,14 @@ const TextsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${smaLength1};
+  opacity: ${({ $visible }) => ($visible ? '1' : '0')};
+  transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
+  transition: opacity 2s, transform 2s;
   width: 100%;
 
   @media (min-width: 650px) {
     width: 50%;
-  };
+  }
 `;
 
 const StyledH1 = styled.h1`
@@ -100,11 +103,11 @@ const StyledH1 = styled.h1`
 
   @media (min-width: 650px) {
     font-size: ${medLength1};
-  };
+  }
 
   @media (min-width: 1000px) {
     font-size: ${medLength2};
-  };
+  }
 `;
 
 const StyledH2 = styled.h2`
@@ -115,9 +118,9 @@ const StyledH2 = styled.h2`
 
   @media (min-width: 650px) {
     font-size: ${smaLength3};
-  };
+  }
 
   @media (min-width: 1000px) {
     font-size: ${medLength1};
-  };
+  }
 `;

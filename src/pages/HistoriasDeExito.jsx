@@ -1,61 +1,69 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import { styled } from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Header from '../components/Header';
-import Titulo from '../components/Titulo'
+import Titulo from '../components/Titulo';
 import Imagen from '../components/Imagen';
 import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import { EstilosGlobales, CentrarPrincipalContenedor } from '../utils/estilosPages';
 import Constructor from '../assets/img/Constructor.svg';
-import {greenSacimex, text, smaLength1, medLength1, medLength3, smaFont, medFont } from '../utils/stylesRules';
+import {
+  greenSacimex,
+  text,
+  smaLength1,
+  medLength1,
+  medLength3,
+  smaFont,
+  medFont
+} from '../utils/stylesRules';
 
 const HistoriasDeExito = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
   const [evitarScroll, setEvitarScroll] = useState(false);
   const [windowState, setWindowState] = useState(null);
 
-  useEffect( () => {
+  useEffect(() => {
     setMostrarAnimaciones(true);
-  },[]);
+  }, []);
 
   const manejarScroll = (estado) => {
     setEvitarScroll(estado);
   };
 
-  return(<>
-    <EstilosGlobales $evitarScroll={evitarScroll}/>
-    <Helmet>
-      <meta
-        name='description'
-        content='¿Necesitas un experto en construcción, diseño, reparaciones o más? ¡Estás en el lugar adecuado!'/>
-      <title>Opciones Sacimex - Red de profesionales</title>
-    </Helmet>
-    <Header
-      mostrarAnimaciones={mostrarAnimaciones}
-      evitarScroll={manejarScroll}
-      barraVerde/>
-    <CentrarPrincipalContenedor>
-      <PrincipalContenedor $mostrarAnimaciones={mostrarAnimaciones}>
-        <Titulo texto='Historias de éxito'/>
-        <ImagenTextoContenedor>
-          <Imagen
-            tamano='300px'
-            imagen={Constructor}
-            alt='Oficios y profesiones'/>
-          <Parrafo>En <b>Opciones Sacimex</b>, creemos que cada trayectoria es un testimonio valioso. Por eso compartimos los 
-          logros alcanzados por nuestros clientes a través del tiempo. Únete a nosotros para celebrar estos 
-          triunfos y descubrir la inspiración que yace en cada camino recorrido.</Parrafo>
-        </ImagenTextoContenedor>
-        <StyledP>Pronto podrás encontrar tu historia aquí.</StyledP>
-      </PrincipalContenedor>
-    </CentrarPrincipalContenedor>
-    <Footer
-      setWindowState={setWindowState}/>
-    <Ventana
-      windowState={windowState}
-      setWindowState={setWindowState}/>
-  </>);
+  return (
+    <>
+      <EstilosGlobales $evitarScroll={evitarScroll} />
+      <Helmet>
+        <meta
+          name='description'
+          content='¿Necesitas un experto en construcción, diseño, reparaciones o más? ¡Estás en el lugar adecuado!'
+        />
+        <title>Opciones Sacimex - Red de profesionales</title>
+      </Helmet>
+      <Header mostrarAnimaciones={mostrarAnimaciones} evitarScroll={manejarScroll} barraVerde />
+      <CentrarPrincipalContenedor>
+        <PrincipalContenedor $mostrarAnimaciones={mostrarAnimaciones}>
+          <Titulo texto='Historias de éxito' />
+          <ImagenTextoContenedor>
+            <Imagen
+              tamano='300px'
+              imagen={Constructor}
+              alt='Oficios y profesiones'
+            />
+            <Parrafo>
+              En <b>Opciones Sacimex</b>, creemos que cada trayectoria es un testimonio valioso. Por eso compartimos los
+              logros alcanzados por nuestros clientes a través del tiempo. Únete a nosotros para celebrar estos
+              triunfos y descubrir la inspiración que yace en cada camino recorrido.
+            </Parrafo>
+          </ImagenTextoContenedor>
+          <StyledP>Pronto podrás encontrar tu historia aquí.</StyledP>
+        </PrincipalContenedor>
+      </CentrarPrincipalContenedor>
+      <Footer setWindowState={setWindowState} />
+      <Ventana windowState={windowState} setWindowState={setWindowState} />
+    </>
+  );
 };
 
 export default HistoriasDeExito;

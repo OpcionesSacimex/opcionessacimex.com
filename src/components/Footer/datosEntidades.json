@@ -1,0 +1,44 @@
+[
+  {
+    "nombre" : "Logo Buro de Entidades Financieras",
+    "url" : "https://www.buro.gob.mx/",
+    "imagen" : "https://www.intercam.com.mx/wp-content/uploads/2019/07/logo-buro-entidades-financieras.png",
+    "title" : "¿Qué es el Buró de Entidades Financieras?",
+    "description" : "El Buró de Entidades Financieras es una institución encargada de reunir y gestionar información financiera relevante sobre los usuarios que han solicitado créditos o realizado operaciones con entidades financieras. Su propósito es proporcionar transparencia y apoyar a los usuarios en la toma de decisiones financieras informadas."
+  },
+  {
+    "nombre" : "Logo Comisión Nacional Bancaria y de Valores",
+    "url" : "https://www.gob.mx/cnbv",
+    "imagen" : "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Logo_de_la_CNBV.svg/80px-Logo_de_Financiera_Rural.svg.png",
+    "title" : "¿Qué es la Comisión Nacional Bancaria y de Valores (CNBV)?",
+    "description" : "La CNBV es una entidad reguladora que supervisa y regula el sistema bancario y los mercados de valores. Su misión es garantizar la solidez y transparencia del sistema financiero, protegiendo los intereses de los usuarios y fomentando la confianza en las instituciones financieras."
+  },
+  {
+    "nombre" : "Logo Financiera Nacional de Desarrollo",
+    "url" : "https://www.gob.mx/fnd",
+    "imagen" : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Logo_de_Financiera_Rural.svg/80px-Logo_de_Financiera_Rural.svg.png",
+    "title" : "¿Qué es la Financiera Nacional de Desarrollo (FND)?",
+    "description" : "La FND es una entidad financiera gubernamental que promueve el desarrollo económico y social del país. Ofrece servicios financieros y créditos a proyectos y programas en diversos sectores para impulsar el crecimiento y bienestar de la sociedad."
+  },
+  {
+    "nombre" : "Logo Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros",
+    "url" : "https://www.gob.mx/condusef",
+    "imagen" : "https://blog.bayport.mx/wp-content/uploads/2021/07/Condusef.jpg",
+    "title" : "¿Qué es la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF)?",
+    "description" : "La CONDUSEF es una institución pública que defiende los derechos de los usuarios de servicios financieros en México. Su misión es promover la transparencia y la equidad en las relaciones entre usuarios y entidades financieras, garantizando la seguridad y confianza en el sistema financiero."
+  },
+  {
+    "nombre" : "Logo Círculo de Crédito",
+    "url" : "https://www.circulodecredito.com.mx/home",
+    "imagen" : "https://otorgantes.circulodecredito.com.mx/CCreditoPM/html/view/images/logo_inicio.gif;jsessionid=hQDJsTc9iDGCUlf9zSqBMC5iqj7hcdzxKn1A_ktwlFIxErMrUqoX!-1169947207",
+    "title" : "¿Qué es el Círculo de Crédito?",
+    "description" : "El Círculo de Crédito es una Sociedad de Información Crediticia que recopila y procesa datos sobre el historial crediticio de personas y empresas en México. Su propósito es proporcionar información a instituciones financieras y empresas para evaluar el riesgo crediticio antes de otorgar préstamos o créditos."
+  },
+  {
+    "nombre" : "Logo Secretaría de Hacienda y Crédito Público",
+    "url" : "https://www.gob.mx/shcp",
+    "imagen" : "https://upload.wikimedia.org/wikipedia/commons/e/e6/SHCP2018-2024.png",
+    "title" : "¿Qué es la Secretaría de Hacienda y Crédito Público (SHCP)?",
+    "description" : "La SHCP es una dependencia del gobierno mexicano responsable de la gestión de las finanzas públicas. Su labor es formular y ejecutar la política económica y fiscal, además de supervisar el manejo de los recursos financieros del país."
+  }
+]

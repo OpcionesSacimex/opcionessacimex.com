@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import 'intersection-observer';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Section from '../Section';
 import Titulo from '../Titulo';
@@ -41,47 +40,52 @@ const AnimacionEntradaProductos = ({ children }) => {
 };
 
 const Productos = () => {
-
-  return(
+  return (
     <Section id='productos'>
-        <Titulo texto='Productos'/>
-        <Contenido>
-          <Contenido $centrarSaciAlianza>
-              <AnimacionEntradaProductos>              
-                <TituloCredito>Saci-Alianza</TituloCredito>                
-                <Imagen
-                  tamano={larLength1}
-                  imagen={saciAlianza}
-                  alt='Saci-Alianza'/>                         
-                <Texto>¡Inicia tu trámite de crédito hoy mismo y accede a las oportunidades financieras que necesitas!</Texto>                
-                <Boton
-                  texto='Conoce más'
-                  referencia='/SaciAlianza'/>
-              </AnimacionEntradaProductos>
-              <AnimacionEntradaProductos>
-                <TituloCredito>Crédito grupal.</TituloCredito>
-                <Imagen
-                  tamano={larLength1}
-                  imagen={creditoGrupalLogo}
-                  alt='Crédito grupal'/>
-                <Texto>Brindamos soluciones financieras a grupos de personas comprometidas con actividades productivas.</Texto>
-                <Boton
-                  texto='Conoce más'
-                  referencia='/CreditoGrupal'/>
-              </AnimacionEntradaProductos>
-          </Contenido>
+      <Titulo texto='Productos' />
+      <Contenido>
+        <ContenidoCentradoSaciAlianza>
           <AnimacionEntradaProductos>
-            <TituloCredito>Crédito individual.</TituloCredito>
+            <TituloCredito>Saci-Alianza</TituloCredito>
             <Imagen
               tamano={larLength1}
-              imagen={creditoIndividualLogo}
-              alt='Crédito individual'/>
-            <Texto>Disfruta de tasas fijas durante todo el plazo de tu crédito. Además, te ofrecemos plazos flexibles de hasta 24 meses.</Texto>
+              imagen={saciAlianza}
+              alt='Saci-Alianza'
+            />
+            <Texto>¡Inicia tu trámite de crédito hoy mismo y accede a las oportunidades financieras que necesitas!</Texto>
             <Boton
               texto='Conoce más'
-              referencia='/CreditoIndividual'/>
+              referencia='/SaciAlianza'
+            />
           </AnimacionEntradaProductos>
-        </Contenido>
+        </ContenidoCentradoSaciAlianza>
+        <AnimacionEntradaProductos>
+          <TituloCredito>Crédito grupal.</TituloCredito>
+          <Imagen
+            tamano={larLength1}
+            imagen={creditoGrupalLogo}
+            alt='Crédito grupal'
+          />
+          <Texto>Brindamos soluciones financieras a grupos de personas comprometidas con actividades productivas.</Texto>
+          <Boton
+            texto='Conoce más'
+            referencia='/CreditoGrupal'
+          />
+        </AnimacionEntradaProductos>
+        <AnimacionEntradaProductos>
+          <TituloCredito>Crédito individual.</TituloCredito>
+          <Imagen
+            tamano={larLength1}
+            imagen={creditoIndividualLogo}
+            alt='Crédito individual'
+          />
+          <Texto>Disfruta de tasas fijas durante todo el plazo de tu crédito. Además, te ofrecemos plazos flexibles de hasta 24 meses.</Texto>
+          <Boton
+            texto='Conoce más'
+            referencia='/CreditoIndividual'
+          />
+        </AnimacionEntradaProductos>
+      </Contenido>
     </Section>
   );
 };
@@ -95,14 +99,18 @@ const Contenido = styled.div`
   max-width: 820px;
 
   @media (min-width: 768px) {
-    flex-direction: ${({ $centrarSaciAlianza }) => $centrarSaciAlianza ? 'row-reverse' : 'row'};
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-  };
+  }
+`;
 
-  @media (min-width: 1000px) {
-    flex-direction: ${({ $centrarSaciAlianza }) => $centrarSaciAlianza ? 'row-reverse' : 'row'};
-  };
+const ContenidoCentradoSaciAlianza = styled(Contenido)`
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
 `;
 
 const ProductoContenedor = styled.div`
@@ -111,9 +119,9 @@ const ProductoContenedor = styled.div`
   flex-direction: column;
   gap: ${smaLength1};
   justify-content: center;
-  opacity: ${({ $visible }) => $visible ? '1' : '0'};
+  opacity: ${({ $visible }) => ($visible ? '1' : '0')};
   padding: 0 ${smaLength1};
-  transform: translateY(${({ $visible }) => $visible ? '0' : '-10px'});
+  transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
   width: ${larLength3};
 `;

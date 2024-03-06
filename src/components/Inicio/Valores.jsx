@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import 'intersection-observer';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Imagen from '../Imagen';
 import honestidadImagen from '../../assets/img/Honestidad.png';
@@ -31,49 +30,51 @@ const AnimacionEntradaValor = ({ children }) => {
   }, []);
 
   return (
-    <Valor 
-      $visible={isVisible}
-      ref={targetRef}>
-        {children}
-    </Valor>
+    <ValorContainer $visible={isVisible} ref={targetRef}>
+      {children}
+    </ValorContainer>
   );
 };
 
 const Valores = () => {
-  return(
-    <PrincipalContenedor>
-      <AnimacionEntradaValor>
-        <ValorTitulo>Honestidad</ValorTitulo>
-        <Imagen
-          tamano={larLength1}
-          imagen={honestidadImagen}
-          alt='Honestidad'/>
-        <TextoValor>Te ofrecemos transparencia financiera en cada paso. Tu confianza es nuestra prioridad.</TextoValor>
-      </AnimacionEntradaValor>
-      <AnimacionEntradaValor>
-        <ValorTitulo>Compromiso</ValorTitulo>
-        <Imagen
-          tamano={larLength1}
-          imagen={compromisoImagen}
-          alt='Compromiso'/>
-        <TextoValor>Trabajamos incansablemente para lograr tus metas financieras, porque tu éxito es nuestro objetivo.</TextoValor>
-      </AnimacionEntradaValor>
-      <AnimacionEntradaValor>
-        <ValorTitulo>Respeto</ValorTitulo>
-        <Imagen
-          tamano={larLength1}
-          imagen={respetoImagen}
-          alt='Respeto'/>
-        <TextoValor>Valoramos tus necesidades y te brindamos soluciones adaptadas a ti, con el respeto que mereces.</TextoValor>
-      </AnimacionEntradaValor>
-    </PrincipalContenedor>
+  return (
+    <MainContainer>
+      {valoresDatos.map((item, index) => (
+        <AnimacionEntradaValor key={index}>
+          <ValorTitle>{item.titulo}</ValorTitle>
+          <Imagen
+            tamano={larLength1}
+            imagen={item.imagen}
+            alt={item.titulo}
+          />
+          <ValorText>{item.texto}</ValorText>
+        </AnimacionEntradaValor>
+      ))}
+    </MainContainer>
   );
 };
 
 export default Valores;
 
-const PrincipalContenedor = styled.ul`
-  align-items: start;
+const valoresDatos = [
+	{
+    titulo : 'Honestidad',
+    texto : 'Te ofrecemos transparencia financiera en cada paso. Tu confianza es nuestra prioridad.',
+    imagen : honestidadImagen
+  },
+  {
+    titulo : 'Compromiso',
+    texto : 'Trabajamos incansablemente para lograr tus metas financieras, porque tu éxito es nuestro objetivo.',
+    imagen : compromisoImagen
+  },
+  {
+    titulo : 'Respeto',
+    texto : 'Valoramos tus necesidades y te brindamos soluciones adaptadas a ti, con el respeto que mereces.',
+    imagen : respetoImagen
+  }
+];
+
+const MainContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: ${medLength2};
@@ -89,24 +90,24 @@ const PrincipalContenedor = styled.ul`
   };
 `;
 
-const Valor = styled.li`
+const ValorContainer = styled.li`
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: ${smaLength1};
   max-width: ${larLength3};
-  opacity: ${({ $visible }) => $visible ? '1' : '0'};
-  transform: translateY(${({ $visible }) => $visible ? '0' : '-10px'});
+  opacity: ${({ $visible }) => ($visible ? '1' : '0')};
+  transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
   width: 40%;
 `;
 
-const ValorTitulo = styled.h4`
+const ValorTitle = styled.h4`
   color: ${text};
   font-size: ${smaFont};
 `;
 
-const TextoValor = styled.p`
+const ValorText = styled.p`
   color: ${label};
   font-size: ${smaFont};
   text-align: center;

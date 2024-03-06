@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Header from '../components/Header';
@@ -12,8 +12,21 @@ import somosCredito from '../assets/img/SomosCredito.png';
 import DamasCredito from '../assets/img/Damas.png';
 import EllaSabiduria from '../assets/img/ELLA.png'
 import FotoGrupal from '../assets/img/FotoGrupal.jpg';
-import { greenSacimex, yellowSacimex, whiteSacimex, text, disabled, smaLength1, smaLength2, smaLength3, medLength1,
-        medLength2, medLength3, larLength3, smaFont } from '../utils/stylesRules';
+import {
+  greenSacimex,
+  yellowSacimex,
+  whiteSacimex,
+  text,
+  disabled,
+  smaLength1,
+  smaLength2,
+  smaLength3,
+  medLength1,
+  medLength2,
+  medLength3,
+  larLength3,
+  smaFont
+} from '../utils/stylesRules';
 
 const CreditoGrupal = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
@@ -21,92 +34,80 @@ const CreditoGrupal = () => {
   const [evitarScroll, setEvitarScroll] = useState(false);
   const [windowState, setWindowState] = useState(null);
 
-  useEffect( () => {
+  useEffect(() => {
     setMostrarAnimaciones(true);
-  },[]);
+  }, []);
 
   const manejarScroll = (estado) => {
     setEvitarScroll(estado);
   };
 
-  return(<>
-    <EstilosGlobales $evitarScroll={evitarScroll}/>
-    <Helmet>
-      <meta
-        name='description'
-        content='Potencia tus proyectos con créditos grupales en Opciones Sacimex.'/>
-      <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script:wght@700&family=Shadows+Into+Light&display=swap" rel="stylesheet"/>
-      <title>Opciones Sacimex - Créditos grupales</title>
-    </Helmet>
-    <Header
-      mostrarAnimaciones={mostrarAnimaciones}
-      evitarScroll={manejarScroll}
-      barraVerde/>
-    <CentrarPrincipalContenedor>
-      <PrincipalContenedor
-        $mostrarAnimaciones={mostrarAnimaciones}>
-          <TextsContainer>            
-            <Titulo texto='Crédito grupal'/>
-            <StyledP>Descubre en <b>Opciones Sacimex</b> los mejores créditos grupales para comunidades unidas. ¡Transforma
-            tus metas en realidad con nuestros créditos compartidos y apoyo financiero comunitario!</StyledP>
+  return (
+    <>
+      <EstilosGlobales $evitarScroll={evitarScroll} />
+      <Helmet>
+        <meta
+          name='description'
+          content='Potencia tus proyectos con créditos grupales en Opciones Sacimex.'
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script:wght@700&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+        <title>Opciones Sacimex - Créditos grupales</title>
+      </Helmet>
+      <Header
+        mostrarAnimaciones={mostrarAnimaciones}
+        evitarScroll={manejarScroll}
+        barraVerde
+      />
+      <CentrarPrincipalContenedor>
+        <PrincipalContenedor $mostrarAnimaciones={mostrarAnimaciones}>
+          <TextsContainer>
+            <Titulo texto='Crédito grupal' />
+            <StyledP>
+              Descubre en <b>Opciones Sacimex</b> los mejores créditos grupales para comunidades unidas.
+              ¡Transforma tus metas en realidad con nuestros créditos compartidos y apoyo financiero comunitario!
+            </StyledP>
           </TextsContainer>
           <Imagen
             tamano='100%'
             imagen={FotoGrupal}
             alt='Crédito grupal Sacimex'
             extras={imgExtras}
-            mostrarAnimaciones={mostrarAnimaciones}/>
-      </PrincipalContenedor>
-      <InformacionYBotones>
-        <Botones>
-          <BotonCredito
-            $activo={creditoActivo === 1}
-            onClick={() => setCreditoActivo(1)}>
-              Ella-Sabiduría
-          </BotonCredito>
-          <BotonCredito
-            $activo={creditoActivo === 2}
-            onClick={() => setCreditoActivo(2)}>
-              Da-más crédito
-          </BotonCredito>
-          <BotonCredito
-            $activo={creditoActivo === 3}
-            onClick={() => setCreditoActivo(3)}>
-              Somos crédito
-          </BotonCredito>
-        </Botones>
-        <Informacion>
-          {creditoActivo === 3 && (<>
-            <Imagen
-              tamano={larLength3}
-              imagen={somosCredito}
-              alt='Somos crédito'/>
-          </>)}
-          {creditoActivo === 2 && (<>
-            <Imagen
-              tamano={larLength3}
-              imagen={DamasCredito}
-              alt='Da-Más crédito'/>
-          </>)}
-          {creditoActivo === 1 && (<>
-            <Imagen
-              tamano={larLength3}
-              imagen={EllaSabiduria}
-              alt='Ella-Sabiduría'/>
-          </>)}
-          <DatosCreditosGrupales creditoActivo={creditoActivo}/>
-        </Informacion>
-      </InformacionYBotones>
-    </CentrarPrincipalContenedor>
-    <Footer
-      setWindowState={setWindowState}/>
-    <Ventana
-      windowState={windowState}
-      setWindowState={setWindowState}/>
-  </>)
+            mostrarAnimaciones={mostrarAnimaciones}
+          />
+        </PrincipalContenedor>
+        <InformacionYBotones>
+          <Botones>
+            {[1, 2, 3].map((numero) => (
+              <BotonCredito
+                key={numero}
+                $activo={creditoActivo === numero}
+                onClick={() => setCreditoActivo(numero)}
+              >
+                {creditoLabels[numero - 1]}
+              </BotonCredito>
+            ))}
+          </Botones>
+          <Informacion>
+            {creditoComponentes[creditoActivo - 1]}
+            <DatosCreditosGrupales creditActive={creditoActivo} />
+          </Informacion>
+        </InformacionYBotones>
+      </CentrarPrincipalContenedor>
+      <Footer setWindowState={setWindowState} />
+      <Ventana windowState={windowState} setWindowState={setWindowState} />
+    </>
+  );
 };
 
 export default CreditoGrupal;
+
+const creditoLabels = ['Ella-Sabiduría', 'Da-más crédito', 'Somos crédito'];
+
+const creditoComponentes = [
+  <Imagen tamano={larLength3} imagen={EllaSabiduria} alt='Ella-Sabiduría' />,
+  <Imagen tamano={larLength3} imagen={DamasCredito} alt='Da-Más crédito' />,
+  <Imagen tamano={larLength3} imagen={somosCredito} alt='Somos crédito' />
+];
 
 const imgExtras = `
   clip-path: circle(95% at 88% 4%);

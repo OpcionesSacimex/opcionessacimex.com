@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
@@ -14,54 +14,50 @@ import { BloquearScroll } from '../utils/estilosPages';
 const Inicio = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
   const [windowState, setWindowState] = useState(null);
+  const { id } = useParams();
 
-  const id = useParams();
+  const ScrollAutomatico = () => {
+    const elemento = document.getElementById(id);
 
-  const ScrollAutomatico = id => {
-    const elemento = document.getElementById(id.id);
-
-    if(elemento) {
+    if (elemento) {
       elemento.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
-        inline: 'nearest'
+        inline: 'nearest',
       });
-    } else if (id.id !== 'Inicio'){
+    } else if (id !== 'Inicio') {
       window.location.replace('/404');
-    };
+    }
   };
 
-  useEffect( () => {
+  useEffect(() => {
     setMostrarAnimaciones(true);
-    ScrollAutomatico(id);
-  },[]);
+    ScrollAutomatico();
+  }, [id]);
 
-  return (<>
-    <GlobalStyle/>
-    <BloquearScroll $evitarScroll={windowState}/>
-    <Helmet>
-      <meta
-        name='description'
-        content='Impulsando tu bienestar económico con créditos accesibles y calidez humana. Descubre nuestras opciones de 
-        créditos y servicios adaptados a tus necesidades.'/>
-      <title>Opciones Sacimex</title>
-    </Helmet>
-    <PrincipalContenedor>
-      <Header
-        mostrarAnimaciones={mostrarAnimaciones}/>
-      <Presentacion
-        mostrarAnimaciones={mostrarAnimaciones}/>            
-      <Productos/>
-      <Conocenos/>
-      <Sucursales/>
-      <Footer
-        setWindowState={setWindowState}/>
-      <Ventana
-        windowState={windowState}
-        setWindowState={setWindowState}/>
-    </PrincipalContenedor>
-  </>);
-}
+  return (
+    <>
+      <GlobalStyle />
+      <BloquearScroll $evitarScroll={windowState} />
+      <Helmet>
+        <meta
+          name='description'
+          content='Impulsando tu bienestar económico con créditos accesibles y calidez humana. Descubre nuestras opciones de créditos y servicios adaptados a tus necesidades.'
+        />
+        <title>Opciones Sacimex</title>
+      </Helmet>
+      <PrincipalContenedor>
+        <Header mostrarAnimaciones={mostrarAnimaciones} />
+        <Presentacion mostrarAnimaciones={mostrarAnimaciones} />
+        <Productos />
+        <Conocenos />
+        <Sucursales />
+        <Footer setWindowState={setWindowState} />
+        <Ventana windowState={windowState} setWindowState={setWindowState} />
+      </PrincipalContenedor>
+    </>
+  );
+};
 
 export default Inicio;
 

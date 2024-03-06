@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import 'intersection-observer';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Section from '../Section';
 import Titulo from '../Titulo';
@@ -32,57 +31,50 @@ const AnimacionEntradaSucursales = ({ children }) => {
   }, []);
 
   return (
-    <SeccionSucursal
-      $visible={isVisible}
-      ref={targetRef}>
-        {children}
+    <SeccionSucursal $visible={isVisible} ref={targetRef}>
+      {children}
     </SeccionSucursal>
   );
 };
 
 const Sucursales = () => {
-  const[indexActivo, setIndexActivo] = useState(null);
+  const [indexActivo, setIndexActivo] = useState(null);
 
   const usarClick = index => {
-    if(indexActivo === index) setIndexActivo(null);
-    else setIndexActivo(index);
+    setIndexActivo(prevIndex => (prevIndex === index ? null : index));
   };
 
-  return(
+  return (
     <Section id='contacto'>
-        <Titulo texto='Contacto'/>
-        <AnimacionEntradaSucursales>
-            {datosSucursales.map( (item, index) => (item.tipo === 2 || item.tipo === 3) && (
-              <Sucursal
-                key={index}
-                nombre={item.nombre}
-                direccion={item.direccion}
-                ubicacion={item.ubicacion}
-                telefono1={item.telefono1}
-                telefono2={item.telefono2}
-                email={item.email}
-                activo={indexActivo === index}>
-                  {indexActivo === index && (<Flecha onClick={() => usarClick(index)}><BsChevronDoubleUp/></Flecha>)}
-                  {indexActivo !== index && (<Flecha onClick={() => usarClick(index)}><BsChevronDoubleDown/></Flecha>)}
+      <Titulo texto='Contacto' />
+      <AnimacionEntradaSucursales>
+        {datosSucursales.map((item, index) => {
+          if (item.tipo === 2 || item.tipo === 3) {
+            return (
+              <Sucursal key={index} {...item} activo={indexActivo === index}>
+                <Flecha onClick={() => usarClick(index)}>
+                  {indexActivo === index ? <BsChevronDoubleUp /> : <BsChevronDoubleDown />}
+                </Flecha>
               </Sucursal>
-            ))} 
-        </AnimacionEntradaSucursales>
-        <AnimacionEntradaSucursales>
-            {datosSucursales.map( (item, index) => item.tipo === 1 && (
-              <Sucursal
-                key={index}
-                nombre={item.nombre}
-                direccion={item.direccion}
-                ubicacion={item.ubicacion}
-                telefono1={item.telefono1}
-                telefono2={item.telefono2}
-                email={item.email}
-                activo={indexActivo === index}>
-                  {indexActivo === index && (<Flecha onClick={() => usarClick(index)}><BsChevronDoubleUp/></Flecha>)}
-                  {indexActivo !== index && (<Flecha onClick={() => usarClick(index)}><BsChevronDoubleDown/></Flecha>)}
+            );
+          }
+          return null;
+        })}
+      </AnimacionEntradaSucursales>
+      <AnimacionEntradaSucursales>
+        {datosSucursales.map((item, index) => {
+          if (item.tipo === 1) {
+            return (
+              <Sucursal key={index} {...item} activo={indexActivo === index}>
+                <Flecha onClick={() => usarClick(index)}>
+                  {indexActivo === index ? <BsChevronDoubleUp /> : <BsChevronDoubleDown />}
+                </Flecha>
               </Sucursal>
-            ))} 
-        </AnimacionEntradaSucursales>
+            );
+          }
+          return null;
+        })}
+      </AnimacionEntradaSucursales>
     </Section>
   );
 };
@@ -95,11 +87,11 @@ const SeccionSucursal = styled.ul`
   flex-direction: column;
   gap: ${smaLength3};
   max-width: 820px;
-  opacity: ${({ $visible }) => $visible ? '1' : '0'};
+  opacity: ${({ $visible }) => ($visible ? '1' : '0')};
   padding: ${smaLength1};
-  transform: translateY(${({ $visible }) => $visible ? '0' : '-10px'});
+  transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
-  width: 80%;  
+  width: 80%;
 
   @media (min-width: 1000px) {
     align-items: flex-start;
@@ -107,7 +99,7 @@ const SeccionSucursal = styled.ul`
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
-  };
+  }
 `;
 
 const Flecha = styled.button`
@@ -124,5 +116,5 @@ const Flecha = styled.button`
 
   &:hover {
     transform: scale(105%);
-  };
+  }
 `;

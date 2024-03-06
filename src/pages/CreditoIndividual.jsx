@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Header from '../components/Header';
@@ -11,8 +11,21 @@ import { EstilosGlobales, CentrarPrincipalContenedor } from '../utils/estilosPag
 import Foto3 from '../assets/img/Foto3.jpg';
 import SaciMotor from '../assets/img/SaciMotor.png';
 import SaciCrece from '../assets/img/SaciCrece.png';
-import { greenSacimex, yellowSacimex, whiteSacimex, text, disabled, smaLength1, smaLength2, smaLength3, medLength1,
-  medLength2, medLength3, larLength3, smaFont } from '../utils/stylesRules';
+import {
+  greenSacimex,
+  yellowSacimex,
+  whiteSacimex,
+  text,
+  disabled,
+  smaLength1,
+  smaLength2,
+  smaLength3,
+  medLength1,
+  medLength2,
+  medLength3,
+  larLength3,
+  smaFont
+} from '../utils/stylesRules';
 
 const CreditoIndividual = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
@@ -20,89 +33,76 @@ const CreditoIndividual = () => {
   const [evitarScroll, setEvitarScroll] = useState(false);
   const [windowState, setWindowState] = useState(null);
 
-  useEffect( () => {
+  useEffect(() => {
     setMostrarAnimaciones(true);
-  },[]);
+  }, []);
 
   const manejarScroll = (estado) => {
     setEvitarScroll(estado);
   };
 
-  return(<>
-    <EstilosGlobales $evitarScroll={evitarScroll} $fondoGris/>
-    <Helmet>
-      <meta
-        name='description'
-        content='Obtén el impulso financiero que necesitas con nuestros créditos individuales en Opciones Sacimex.'/>
-      <title>Opciones Sacimex - Créditos individuales</title>
-      <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Marck+Script&family=Pacifico&display=swap" rel="stylesheet"/>
-    </Helmet>
-    <Header
-      mostrarAnimaciones={mostrarAnimaciones}
-      evitarScroll={manejarScroll}
-      barraVerde/>
-    <CentrarPrincipalContenedor>
-      <PrincipalContenedor
-        $mostrarAnimaciones={mostrarAnimaciones}>
+  return (
+    <>
+      <EstilosGlobales $evitarScroll={evitarScroll} $fondoGris />
+      <Helmet>
+        <meta
+          name='description'
+          content='Obtén el impulso financiero que necesitas con nuestros créditos individuales en Opciones Sacimex.'
+        />
+        <title>Opciones Sacimex - Créditos individuales</title>
+        <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Marck+Script&family=Pacifico&display=swap" rel="stylesheet"/>
+      </Helmet>
+      <Header mostrarAnimaciones={mostrarAnimaciones} evitarScroll={manejarScroll} barraVerde />
+      <CentrarPrincipalContenedor>
+        <PrincipalContenedor $mostrarAnimaciones={mostrarAnimaciones}>
           <Imagen
             tamano='100%'
             imagen={Foto3}
             alt='Frutería Sacimex'
             mostrarAnimaciones={mostrarAnimaciones}
-            extras={imgExtras}/>
+            extras={imgExtras}
+          />
           <TextsContainer>
-            <Titulo texto='Crédito individual'/>
-            <StyledP>En <b>Opciones Sacimex</b>, obtén los mejores créditos individuales para alcanzar tus objetivos 
-              financieros. ¡Logra tus metas personales con nuestro respaldo financiero a tu medida!</StyledP>
+            <Titulo texto='Crédito individual' />
+            <StyledP>
+              En <b>Opciones Sacimex</b>, obtén los mejores créditos individuales para alcanzar tus objetivos financieros.
+              ¡Logra tus metas personales con nuestro respaldo financiero a tu medida!
+            </StyledP>
           </TextsContainer>
-      </PrincipalContenedor>
-      <InformacionYBotones>
-            <Botones>
+        </PrincipalContenedor>
+        <InformacionYBotones>
+          <Botones>
+            {[1, 2, 3].map(numero => (
               <BotonCredito
-                $activo={creditoActivo === 1}
-                onClick={() => setCreditoActivo(1)}>
-                  Saci-Motor
+                key={numero}
+                $activo={creditoActivo === numero}
+                onClick={() => setCreditoActivo(numero)}
+              >
+                {creditoLabels[numero - 1]}
               </BotonCredito>
-              <BotonCredito
-                $activo={creditoActivo === 2}
-                onClick={() => setCreditoActivo(2)}>
-                  Saci-Crece
-              </BotonCredito>
-              <BotonCredito
-                $activo={creditoActivo === 3}
-                onClick={() => setCreditoActivo(3)}>
-                  Línea Sacimex
-              </BotonCredito>
-              <BotonSaci href='/SaciAlianza'>
-                  Saci-Alianza
-              </BotonSaci>
-            </Botones>
-            <Informacion>
-              {creditoActivo === 1 && (<>
-                <Imagen
-                  tamano={larLength3}
-                  imagen={SaciMotor}
-                  alt='Saci-Motor'/>
-              </>)}
-              {creditoActivo === 2 && (<>
-                <Imagen
-                  tamano={larLength3}
-                  imagen={SaciCrece}
-                  alt='Saci-Crece'/>
-              </>)}
-              <DatosCreditosIndividuales creditoActivo={creditoActivo}/>
-            </Informacion>
-          </InformacionYBotones>
-    </CentrarPrincipalContenedor>
-    <Footer
-      setWindowState={setWindowState}/>
-    <Ventana
-      windowState={windowState}
-      setWindowState={setWindowState}/>
-  </>);
+            ))}
+            <BotonSaci href='/SaciAlianza'>Saci-Alianza</BotonSaci>
+          </Botones>
+          <Informacion>
+            {creditoComponentes[creditoActivo - 1]}
+            <DatosCreditosIndividuales creditoActivo={creditoActivo} />
+          </Informacion>
+        </InformacionYBotones>
+      </CentrarPrincipalContenedor>
+      <Footer setWindowState={setWindowState} />
+      <Ventana windowState={windowState} setWindowState={setWindowState} />
+    </>
+  );
 };
 
 export default CreditoIndividual;
+
+const creditoLabels = ['Saci-Motor', 'Saci-Crece', 'Línea Sacimex'];
+
+const creditoComponentes = [
+  <Imagen tamano={larLength3} imagen={SaciMotor} alt='Saci-Motor' />,
+  <Imagen tamano={larLength3} imagen={SaciCrece} alt='Saci-Crece' />
+];
 
 const imgExtras = `
   clip-path: circle(95% at 12% 4%);

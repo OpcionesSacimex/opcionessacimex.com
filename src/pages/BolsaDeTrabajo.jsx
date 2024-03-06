@@ -24,62 +24,27 @@ const BolsaDeTrabajo = () => {
   const elementToScroll = useRef(null);
 
   useEffect(() => {
-    fetchDbJobVacancies();
-    fetchDbBranches();
-    fetchDbProfiles();
+    fetchDbData('VacantController', 'all', setJobVacancies);
+    fetchDbData('SucursalController', 'all', setBranches);
+    fetchDbData('ProfileController', 'all', setProfiles);
     setMostrarAnimaciones(true);
   }, []);
 
-  
-  const fetchDbJobVacancies = async () => {
+  const fetchDbData = async (controller, selection, setData) => {
     try {
-      const response = await fetch('https://opcionessacimex.com/php/DHO/Controller/VacantController.php', {
+      const response = await fetch(`https://opcionessacimex.com/php/DHO/Controller/${controller}.php`, {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json'
         },
-        body: JSON.stringify({'selection' : 'all'})
+        body: JSON.stringify({ selection })
       });
-  
-      const result = await response.json();
-      setJobVacancies(result);
-    } catch (error) {
-      console.error(error)
-    };
-  };
 
-  const fetchDbBranches = async () => {
-    try {
-      const response = await fetch('https://opcionessacimex.com/php/DHO/Controller/SucursalController.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify({'selection' : 'all'})
-      });
-  
       const result = await response.json();
-      setBranches(result);
+      setData(result);
     } catch (error) {
-      console.error(error)
-    };
-  };
-
-  const fetchDbProfiles = async () => {
-    try {
-      const response = await fetch('https://opcionessacimex.com/php/DHO/Controller/ProfileController.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify({'selection' : 'all'})
-      });
-  
-      const result = await response.json();
-      setProfiles(result);
-    } catch (error) {
-      console.error(error)
-    };
+      console.error(error);
+    }
   };
 
   const scrollToElement = () => {
@@ -204,4 +169,3 @@ const Tabla = styled.div`
   grid-row-gap: 0px;
   width: 100%;
 `;
-

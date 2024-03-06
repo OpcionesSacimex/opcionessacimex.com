@@ -1,38 +1,39 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { AiFillCloseCircle } from 'react-icons/ai';
+import { whiteSacimex, label, smaLength2, medLength2, medFont } from '../utils/stylesRules';
 import AvisoPrivacidad from './Ventana/AvisoPrivacidad';
 import UnidadEspecializada from './Ventana/UnidadEspecializada';
 import DenunciaAnonima from './Ventana/DenunciaAnonima';
 import InfoVacante from './OportunidadesDeCarrera/InfoVacante';
-import { AiFillCloseCircle } from 'react-icons/ai';
-import { whiteSacimex, label, smaLength2, medLength2, medFont } from '../utils/stylesRules';
 
 const Ventana = ({ windowState, setWindowState, vacanteSeleccionada, jobVacancies, profiles, activeBranch, branches }) => {
-  return(
-    <PrincipalContenedor
-      $showWindow={windowState}>
-        <Hoja $showWindow={windowState}>
-          <BotonCerrarPosicionador>
-            <BotonCerrarContenedor
-              onClick={() => setWindowState(null)}>
-                <AiFillCloseCircle/>
-            </BotonCerrarContenedor>
-          </BotonCerrarPosicionador>
-          {windowState === 1 && (<AvisoPrivacidad/>)}
-          {windowState === 2 && (<UnidadEspecializada/>)}
-          {windowState === 3 && (<DenunciaAnonima/>)}
-          {windowState === 4 && (<InfoVacante vacanteSeleccionada={vacanteSeleccionada} jobVacancies={jobVacancies} profiles={profiles} activeBranch={activeBranch} branches={branches}/>)}
-          <DegradadoFinal/>
-        </Hoja>
-        <Opacidad
-          $showWindow={windowState}
-          onClick={() => setWindowState(null)}/>
-    </PrincipalContenedor>
+  const handleClose = () => {
+    setWindowState(null);
+  };
+
+  return (
+    <Container $showWindow={windowState}>
+      <Sheet $showWindow={windowState}>
+        <CloseButtonContainer>
+          <CloseButton onClick={handleClose}>
+            <AiFillCloseCircle />
+          </CloseButton>
+        </CloseButtonContainer>
+        {windowState === 1 && <AvisoPrivacidad />}
+        {windowState === 2 && <UnidadEspecializada />}
+        {windowState === 3 && <DenunciaAnonima />}
+        {windowState === 4 && <InfoVacante vacanteSeleccionada={vacanteSeleccionada} jobVacancies={jobVacancies} profiles={profiles} activeBranch={activeBranch} branches={branches} />}
+        <FinalGradient />
+      </Sheet>
+      <Opacity $showWindow={windowState} onClick={handleClose} />
+    </Container>
   );
 };
 
 export default Ventana;
 
-const PrincipalContenedor = styled.div`
+const Container = styled.div`
   height: 100vh;
   position: fixed;
   top: 0;
@@ -41,7 +42,7 @@ const PrincipalContenedor = styled.div`
   z-index: 110;
 `;
 
-const Hoja = styled.div`
+const Sheet = styled.div`
   background-color: ${whiteSacimex};
   border-radius: 10px;
   height: 100vh;
@@ -55,7 +56,7 @@ const Hoja = styled.div`
   z-index: 110;
 `;
 
-const Opacidad = styled.div`
+const Opacity = styled.div`
   backdrop-filter: blur(3px);
   background-color: rgba(32, 32, 32, 0.5);  
   height: 100%;
@@ -63,9 +64,9 @@ const Opacidad = styled.div`
   transition: opacity .3s;
   width: 100%;
   z-index: 105;
-`
+`;
 
-const BotonCerrarPosicionador = styled.div`
+const CloseButtonContainer = styled.div`
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);
   border-radius: 10px;
   display: grid;
@@ -77,7 +78,8 @@ const BotonCerrarPosicionador = styled.div`
   top: 0;
   width: 100%;
 `;
-const BotonCerrarContenedor = styled.button`
+
+const CloseButton = styled.button`
   background-color: transparent;
   border: none;
   color: ${label};
@@ -85,7 +87,7 @@ const BotonCerrarContenedor = styled.button`
   font-size: ${medFont};
 `;
 
-const DegradadoFinal = styled.div`
+const FinalGradient = styled.div`
   background: linear-gradient(0, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);
   border-radius: 0 0 10px 10px;
   bottom: 0;

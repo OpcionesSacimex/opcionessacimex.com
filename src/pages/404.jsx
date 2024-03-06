@@ -1,25 +1,24 @@
 import styled from 'styled-components';
 import Boton from '../components/Boton';
 import Animation from '../components/404/Animation';
-import {text, label, smaLength3,larLength3, smaFont, larFont} from '../utils/stylesRules';
+import { text, label, smaLength3, larLength3, smaFont, larFont } from '../utils/stylesRules';
 
-const ErrorPage = () => {
-  return(
-    <MainContainer>
-      <ContentContainer>
-        <AnimationContainer><Animation/></AnimationContainer>
-        <TextsContainer>
-          <StyledH3>Error 404: Página no encontrada</StyledH3>
-          <StyledP>Lamentablemente, la página que intentas acceder no se encuentra en nuestro dominio en este momento. Nos 
-            disculpamos por cualquier inconveniente que esto pueda causarte.</StyledP>
-        </TextsContainer>
-      </ContentContainer>   
-      <Boton
-        referencia='/Inicio'
-        texto='Ir al inicio'/>   
-    </MainContainer>
-  );
-};
+const ErrorPage = () => (
+  <MainContainer>
+    <ContentContainer>
+      <AnimationContainer>
+        <Animation />
+      </AnimationContainer>
+      <TextsContainer>
+        <StyledH3>Error 404: Página no encontrada</StyledH3>
+        <StyledP>
+          Lamentablemente, la página que intentas acceder no se encuentra en nuestro dominio en este momento. Nos disculpamos por cualquier inconveniente que esto pueda causarte.
+        </StyledP>
+      </TextsContainer>
+    </ContentContainer>
+    <Boton referencia='/Inicio' texto='Ir al inicio' />
+  </MainContainer>
+);
 
 export default ErrorPage;
 

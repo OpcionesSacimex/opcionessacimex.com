@@ -1,0 +1,62 @@
+[
+  {
+    "category" : "Productos",
+    "subcategories" : [
+      {
+        "name" : "Crédito grupal",
+        "link" : "CreditoGrupal"
+      },
+      {
+        "name" : "Crédito individual",
+        "link" : "CreditoIndividual"
+      },
+      {
+        "name" : "Servicios",
+        "link" : "Servicios"
+      }
+    ]
+  },
+  {
+    "category" : "Conócenos",
+    "subcategories" : [
+      {
+        "name" : "Quiénes somos",
+        "link" : "conocenos"
+      },
+      {
+        "name" : "Filosofía y valores",
+        "link" : "valores"
+      },
+      {
+        "name" : "Ubicación y contacto",
+        "link" : "contacto"
+      }
+    ]
+  },
+  {
+    "category" : "Compromiso social",
+    "subcategories" : [
+      {
+        "name" : "Educación financiera",
+        "link" : "EducacionFinanciera"
+      },
+      {
+        "name" : "Red de oficios y profesiones",
+        "link" : "RedDeProfesionales"
+      },
+      {
+        "name" : "Historias de éxito",
+        "link" : "HistoriasDeExito"
+      }
+    ]
+  },
+  {
+    "category" : "Bolsa de trabajo",
+    "subcategories" : [
+      {
+        "name" : "Oportunidades de carrera ",
+        "link" : "OportunidadesDeCarrera"
+      }
+    ]
+  }
+]

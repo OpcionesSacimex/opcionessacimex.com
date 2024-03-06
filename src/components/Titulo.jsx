@@ -37,7 +37,7 @@ const AnimacionEntradaTitulo = ({ children, color, padding }) => {
   );
 };
 
-const Titulo = ({texto, padding, color, mostrarAnimaciones}) => {
+const Titulo = ({texto, padding, color}) => {
   return(
     <AnimacionEntradaTitulo
       padding={padding}
@@ -50,7 +50,7 @@ const Titulo = ({texto, padding, color, mostrarAnimaciones}) => {
 export default Titulo;
 
 const PrincipalContenedor = styled.h2`
-  color: ${({ $color }) => $color ? ($color) : greenSacimex};
+  color: ${greenSacimex};
   font-size: ${larFont};
   margin: auto;
   opacity: ${({ $visible }) => $visible ? '1' : '0'};

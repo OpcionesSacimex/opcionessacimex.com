@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Header from '../components/Header';
@@ -6,7 +6,7 @@ import Titulo from '../components/Titulo';
 import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import { EstilosGlobales, CentrarPrincipalContenedor } from '../utils/estilosPages';
-import { datosCreditos } from '../utils/datos';
+import datosCreditos from '../components/Comisiones/datosComisiones.json';
 import { greenSacimex, text, label, disabled, smaLength1, medLength1, medLength2, medLength3, smaFont, medFont } from '../utils/stylesRules';
 
 const Comisiones = () => {
@@ -14,52 +14,48 @@ const Comisiones = () => {
   const [evitarScroll, setEvitarScroll] = useState(false);
   const [windowState, setWindowState] = useState(null);
 
-  const existeCampo = (campo, index) => {
-    const existe = campo in datosCreditos[index];
-
-    return existe;
-  };
-
-  useEffect( () => {
+  useEffect(() => {
     setMostrarAnimaciones(true);
-  },[]);
+  }, []);
 
   const manejarScroll = (estado) => {
     setEvitarScroll(estado);
   };
 
-  return(<>
-    <EstilosGlobales $evitarScroll={evitarScroll}/>
-    <Helmet>
-      <meta
-        name='description'
-        content='Créditos accesibles con transparencia en Opciones Sacimex. Descubre nuestras opciones de financiamiento con comisiones claras y justas.'/>
-      <title>Opciones Sacimex - Comisiones</title>
-    </Helmet>
-    <Header
-      mostrarAnimaciones={mostrarAnimaciones}
-      evitarScroll={manejarScroll}
-      barraVerde/>
-    <CentrarPrincipalContenedor>
-      <PrincipalContenedor
-        $mostrarAnimaciones={mostrarAnimaciones}>
-          <Titulo
-            texto='Comisiones'/>
+  const existeCampo = (campo, index) => {
+    const existe = campo in datosCreditos[index];
+    return existe;
+  };
+
+  return (
+    <>
+      <EstilosGlobales $evitarScroll={evitarScroll} />
+      <Helmet>
+        <meta
+          name='description'
+          content='Créditos accesibles con transparencia en Opciones Sacimex. Descubre nuestras opciones de financiamiento con comisiones claras y justas.'
+        />
+        <title>Opciones Sacimex - Comisiones</title>
+      </Helmet>
+      <Header mostrarAnimaciones={mostrarAnimaciones} evitarScroll={manejarScroll} barraVerde />
+      <CentrarPrincipalContenedor>
+        <PrincipalContenedor $mostrarAnimaciones={mostrarAnimaciones}>
+          <Titulo texto='Comisiones' />
           <div>
             <OpcionesSaci>Opciones Sacimex S.A. de C.V. SOFOM E.N.R.</OpcionesSaci>
             <Sacimex>Sacimex</Sacimex>
           </div>
-          {datosCreditos.map( (item, index) => (
+          {datosCreditos.map((item, index) => (
             <CreditoContenedor key={index}>
               <NombreCredito>{item.nombre}</NombreCredito>
               <DatosCredito>{item.numeroDeRegistro}</DatosCredito>
               <DatosCredito>{item.tipoDeCredito}</DatosCredito>
-              {item.subtipoDeCredito && (<DatosCredito>{item.subtipoDeCredito}</DatosCredito>)}
+              {item.subtipoDeCredito && <DatosCredito>{item.subtipoDeCredito}</DatosCredito>}
               <TablaContenedor>
                 <Tabla>
-                  {(existeCampo('apertura', index) || existeCampo('disposicionDelCredito', index) ||
-                  existeCampo('gastosDeInvestigacion', index) || existeCampo('pagoTardio', index) ||
-                  existeCampo('gastosDeCobranza', index)) && (
+                  {['apertura', 'disposicionDelCredito', 'gastosDeInvestigacion', 'pagoTardio', 'gastosDeCobranza'].some(
+                    (campo) => campo in datosCreditos[index]
+                  ) && (
                     <tr>
                       <Encabezado $titulo></Encabezado>
                       <Encabezado>Porcentaje</Encabezado>
@@ -70,79 +66,28 @@ const Comisiones = () => {
                       <Encabezado>Fecha de entrada</Encabezado>
                       <Encabezado>Fecha de actualización</Encabezado>
                     </tr>
-                  )}                  
-                  {existeCampo('apertura', index) && (
-                    <tr>
-                      <Celda $titulo>Contratación o apertura</Celda>
-                      <Celda>{item.apertura.porcentaje}</Celda>
-                      <Celda>{item.apertura.yo} </Celda>
-                      <Celda>{item.apertura.moneda}</Celda>
-                      <Celda>{item.apertura.referencia}</Celda>
-                      <Celda>{item.apertura.periocidad}</Celda>
-                      <Celda>{item.apertura.fechaDeEntrada}</Celda>
-                      <Celda>{item.apertura.fechaDeActualizacion}</Celda>
-                    </tr>
                   )}
-                  {existeCampo('disposicionDelCredito', index) && (
-                    <tr>
-                      <Celda $titulo>Disposición del crédito</Celda>
-                      <Celda>{item.disposicionDelCredito.porcentaje}</Celda>
-                      <Celda>{item.disposicionDelCredito.yo}</Celda>
-                      <Celda>{item.disposicionDelCredito.moneda}</Celda>
-                      <Celda>{item.disposicionDelCredito.referencia}</Celda>
-                      <Celda>{item.disposicionDelCredito.periocidad}</Celda>
-                      <Celda>{item.disposicionDelCredito.fechaDeEntrada}</Celda>
-                      <Celda>{item.disposicionDelCredito.fechaDeActualizacion}</Celda>
-                    </tr>
-                  )}
-                  {existeCampo('gastosDeInvestigacion', index) && (
-                    <tr>
-                      <Celda $titulo>Gastos de investigación y / o formalización</Celda>
-                      <Celda>{item.gastosDeInvestigacion.porcentaje}</Celda>
-                      <Celda>{item.gastosDeInvestigacion.yo}</Celda>
-                      <Celda>{item.gastosDeInvestigacion.moneda}</Celda>
-                      <Celda>{item.gastosDeInvestigacion.referencia}</Celda>
-                      <Celda>{item.gastosDeInvestigacion.periocidad}</Celda>
-                      <Celda>{item.gastosDeInvestigacion.fechaDeEntrada}</Celda>
-                      <Celda>{item.gastosDeInvestigacion.fechaDeActualizacion}</Celda>
-                    </tr>
-                  )}    
-                  {existeCampo('pagoTardio', index) && (
-                    <tr>
-                      <Celda $titulo>Pago tardío o inoportuno</Celda>
-                      <Celda>{item.pagoTardio.porcentaje}</Celda>
-                      <Celda>{item.pagoTardio.yo}</Celda>
-                      <Celda>{item.pagoTardio.moneda}</Celda>
-                      <Celda>{item.pagoTardio.referencia}</Celda>
-                      <Celda>{item.pagoTardio.periocidad}</Celda>
-                      <Celda>{item.pagoTardio.fechaDeEntrada}</Celda>
-                      <Celda>{item.pagoTardio.fechaDeActualizacion}</Celda>
-                    </tr>
-                  )}
-                  {existeCampo('gastosDeCobranza', index) && (
-                    <tr>
-                      <Celda $titulo>Gastos de cobranza</Celda>
-                      <Celda>{item.gastosDeCobranza.porcentaje}</Celda>
-                      <Celda>{item.gastosDeCobranza.yo}</Celda>
-                      <Celda>{item.gastosDeCobranza.moneda}</Celda>
-                      <Celda>{item.gastosDeCobranza.referencia}</Celda>
-                      <Celda>{item.gastosDeCobranza.periocidad}</Celda>
-                      <Celda>{item.gastosDeCobranza.fechaDeEntrada}</Celda>
-                      <Celda>{item.gastosDeCobranza.fechaDeActualizacion}</Celda>
-                    </tr>
+                  {['apertura', 'disposicionDelCredito', 'gastosDeInvestigacion', 'pagoTardio', 'gastosDeCobranza'].map(
+                    (campo) =>
+                      existeCampo(campo, index) && (
+                        <tr key={campo}>
+                          <Celda $titulo>{campo}</Celda>
+                          {Object.values(item[campo]).map((valor, i) => (
+                            <Celda key={i}>{valor}</Celda>
+                          ))}
+                        </tr>
+                      )
                   )}
                 </Tabla>
               </TablaContenedor>
             </CreditoContenedor>
           ))}
-      </PrincipalContenedor>
-    </CentrarPrincipalContenedor>
-    <Footer
-      setWindowState={setWindowState}/>
-    <Ventana
-      windowState={windowState}
-      setWindowState={setWindowState}/>
-  </>);
+        </PrincipalContenedor>
+      </CentrarPrincipalContenedor>
+      <Footer setWindowState={setWindowState} />
+      <Ventana windowState={windowState} setWindowState={setWindowState} />
+    </>
+  );
 };
 
 export default Comisiones;
