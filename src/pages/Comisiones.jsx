@@ -160,7 +160,7 @@ const Tabla = styled.table`
 const Celda = styled.td`
   border-bottom: 1px solid ${colors.disabled};
   ${({ $titulo }) => $titulo && (`border-right: 1px solid ${colors.label};`)};
-  ${({ $titulo }) => $titulo ? `color: ${text};` : `color: ${colors.label};`};
+  ${({ $titulo }) => $titulo ? `color: ${colors.text};` : `color: ${colors.label};`};
   ${({ $titulo }) => $titulo && (`font-weight: 800`)};
   padding: ${lengths.small[1]};
 `;

@@ -86,6 +86,6 @@ const TelefonosContenedor = styled.div`
 `;
 
 const Telefono = styled.a`
-  color: ${({ $mapa }) => ($mapa ? colors.green : text)};
+  color: ${({ $mapa }) => ($mapa ? colors.green : colors.text)};
   font-size: ${fontSizes.small};
 `;

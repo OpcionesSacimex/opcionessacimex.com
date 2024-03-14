@@ -74,29 +74,6 @@ const SolicitaCredito = () => {
 
 export default SolicitaCredito;
 
-const datosPasos = [
-  {
-    titulo : '1. Ingresa a SaciAlianza.',
-    texto : `Inicia tu proceso ingresando a nuestra página ${<LinkSaci href='http://convenio.opcionessacimex.com/'>Saci-Alianza</LinkSaci>}.`,
-    imagen : paso1
-  },
-  {
-    titulo : '2. Completa tu solicitud en línea.',
-    texto : 'Proporciona tus datos a través de un formulario en línea.',
-    imagen : paso2
-  },
-  {
-    titulo : '3. Elige una forma de contacto.',
-    texto : 'Elige una forma de contacto para que uno de nuestros asesores se comunique contigo.',
-    imagen : paso3
-  },
-  {
-    titulo : '4. Recibe tu dinero rápidamente.',
-    texto : 'Una vez que el asesor haya revisado la solicitud y aprobado el crédito, el último paso es recibir el dinero solicitado.',
-    imagen : paso4
-  }
-];
-
 const PrincipalContenedor = styled.div`
   align-items: center;
   display: flex;
@@ -182,3 +159,26 @@ const TextoFinal = styled.p`
   padding: 0 ${lengths.medium[1]};
   text-align: center;
 `;
+
+const datosPasos = [
+  {
+    titulo : '1. Ingresa a SaciAlianza.',
+    texto : `Inicia tu proceso ingresando a nuestra página ${<LinkSaci href='http://convenio.opcionessacimex.com/'>Saci-Alianza</LinkSaci>}.`,
+    imagen : paso1
+  },
+  {
+    titulo : '2. Completa tu solicitud en línea.',
+    texto : 'Proporciona tus datos a través de un formulario en línea.',
+    imagen : paso2
+  },
+  {
+    titulo : '3. Elige una forma de contacto.',
+    texto : 'Elige una forma de contacto para que uno de nuestros asesores se comunique contigo.',
+    imagen : paso3
+  },
+  {
+    titulo : '4. Recibe tu dinero rápidamente.',
+    texto : 'Una vez que el asesor haya revisado la solicitud y aprobado el crédito, el último paso es recibir el dinero solicitado.',
+    imagen : paso4
+  }
+];
