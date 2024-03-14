@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import DatosLogos from '../components/Servicios/DatosLogos.json';
 import { EstilosGlobales, CentrarPrincipalContenedor } from '../utils/estilosPages';
-import { text, medLength1, medLength3, medFont } from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const Servicios = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(true);
@@ -43,7 +43,6 @@ const Servicios = () => {
               {renderLogos('payment')}
             </ImagenesContenedor>
           </ContenedorDeLogos>
-
           <ContenedorDeLogos>
             <StyledP>En nuestras sucursales, también ofrecemos una variedad de servicios de remesas que incluyen:</StyledP>
             <ImagenesContenedor>
@@ -72,19 +71,19 @@ const PrincipalContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength1};
+  gap: ${lengths.medium[1]};
   justify-content: flex-start;
-  margin-top: ${medLength3};
+  margin-top: ${lengths.medium[3]};
   opacity: ${({ $mostrarAnimaciones }) => ($mostrarAnimaciones ? '1' : '0')};
-  padding: ${medLength1} 0 ${medLength3};
+  padding: ${lengths.medium[1]} 0 ${lengths.medium[3]};
   transform: translateY(${({ $mostrarAnimaciones }) => ($mostrarAnimaciones ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
   width: 100%;
 `;
 
 const StyledP = styled.p`
-  color: ${text};
-  font-size: ${medFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.medium};
   text-align: center;
   width: 90%;
 `;
@@ -97,7 +96,7 @@ const ImagenesContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: ${medLength1};
+  gap: ${lengths.medium[1]};
   justify-content: center;
   width: 100%;
 `;

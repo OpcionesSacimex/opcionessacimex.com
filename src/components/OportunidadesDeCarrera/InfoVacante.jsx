@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Boton from '../Boton';
-import { greenSacimex, text, smaLength1, medLength1, medLength2, smaFont, medFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const InfoVacante = ({ vacanteSeleccionada, jobVacancies, profiles, activeBranch, branches }) => {
   const vacancie = jobVacancies.find(vacante => vacante.idVacant === vacanteSeleccionada);
@@ -48,9 +48,9 @@ const InfoVacante = ({ vacanteSeleccionada, jobVacancies, profiles, activeBranch
 export default InfoVacante;
 
 const Titulo = styled.h5`
-  color: ${greenSacimex};
-  font-size: ${medFont};
-  padding-bottom: ${smaLength1};
+  color: ${colors.green};
+  font-size: ${fontSizes.medium};
+  padding-bottom: ${lengths.small[1]};
   text-align: center;
 `;
 
@@ -60,14 +60,14 @@ const Textos = styled.div`
 `;
 
 const SubTitulo = styled.h3`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   font-weight: 700;
-  padding-bottom: ${smaLength1};
+  padding-bottom: ${lengths.small[1]};
 `;
 
 const Lista = styled.ul`
-  font-size: ${smaFont};
+  font-size: ${fontSizes.small};
   text-align: left;
   width: 100%;
 `;
@@ -76,7 +76,7 @@ const ContenedorTexto = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength1};
-  padding: ${medLength2};
+  gap: ${lengths.medium[1]};
+  padding: ${lengths.medium[2]};
   width: 100%;
 `;

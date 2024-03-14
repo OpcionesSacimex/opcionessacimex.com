@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { label, smaLength2, smaLength3, medLength3, smaFont, medFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const AvisoPrivacidad = () => {
   return(
@@ -92,48 +92,48 @@ const Texto = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength2};
-  padding: ${medLength3} ${smaLength3};
+  gap: ${lengths.small[2]};
+  padding: ${lengths.medium[3]} ${lengths.small[3]};
   width: 100%;
 `;
 
 const Titulo = styled.h3`
-  font-size: ${medFont};
+  font-size: ${fontSizes.medium};
 `;
 
 const SubTitulo = styled.h4`
-  font-size: ${smaFont};
+  font-size: ${fontSizes.medium};
   text-align: justify;
   width: 100%;
 `;
 
 const Parrafo = styled.p`
-  color: ${label};
-  font-size: ${smaFont};
+  color: ${colors.label};
+  font-size: ${fontSizes.medium};
   text-align: justify;
   width: 100%;
 
   a {    
-    font-size: ${smaFont};
+    font-size: ${fontSizes.medium};
   };
 
   em {
-    font-size: ${smaFont};
+    font-size: ${fontSizes.medium};
   };
 `;
 
 const Lista = styled.ul`
-  color: ${label};
+  color: ${colors.label};
   list-style-type: disc;
-  padding-left: ${smaLength2};
+  padding-left: ${lengths.small[2]};
   text-align: justify;
   width: 100%;
 
   li {
-    font-size: ${smaFont};
+    font-size: ${fontSizes.medium};
   };
 
   b {
-    font-size: ${smaFont};
+    font-size: ${fontSizes.medium};
   }
 `;

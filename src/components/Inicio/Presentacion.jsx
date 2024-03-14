@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Section from '../Section';
 import Foto1 from '../../assets/img/Foto1.jpg';
-import { greenSacimex, whiteSacimex, label, smaLength1, smaLength2, smaLength3, medLength1, medLength2 } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const Presentacion = () => {
   return <AnimacionEntradaBoton />;
@@ -50,7 +50,7 @@ const PrincipalContainer = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: ${medLength2};
+  gap: ${lengths.medium[2]};
   justify-content: space-between;
   max-width: 1000px;
   opacity: 1;
@@ -81,10 +81,10 @@ const ImagePresentation = styled.div`
 
 const TextsContainer = styled.div`
   align-items: end;
-  background-color: ${whiteSacimex};
+  background-color: ${colors.white};
   display: flex;
   flex-direction: column;
-  gap: ${smaLength1};
+  gap: ${lengths.small[1]};
   opacity: ${({ $visible }) => ($visible ? '1' : '0')};
   transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
@@ -96,31 +96,31 @@ const TextsContainer = styled.div`
 `;
 
 const StyledH1 = styled.h1`
-  color: ${greenSacimex};
-  font-size: ${medLength1};
+  color: ${colors.green};
+  font-size: ${lengths.medium[1]};
   text-align: center;
   width: 100%;
 
   @media (min-width: 650px) {
-    font-size: ${medLength1};
+    font-size: ${lengths.medium[1]};
   }
 
   @media (min-width: 1000px) {
-    font-size: ${medLength2};
+    font-size: ${lengths.medium[2]};
   }
 `;
 
 const StyledH2 = styled.h2`
-  color: ${label};
-  font-size: ${smaLength2};
+  color: ${colors.label};
+  font-size: ${lengths.small[2]};
   text-align: center;
   width: 100%;
 
   @media (min-width: 650px) {
-    font-size: ${smaLength3};
+    font-size: ${lengths.small[3]};
   }
 
   @media (min-width: 1000px) {
-    font-size: ${medLength1};
+    font-size: ${lengths.medium[1]};
   }
 `;

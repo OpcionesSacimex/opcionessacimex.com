@@ -1,12 +1,5 @@
 import {styled} from 'styled-components';
-import {
-  whiteSacimex,
-  text,
-  disabled,
-  smaLength1,
-  larLength3,
-  smaFont
-} from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 
 const PreviewLink = ({ url, image, title }) => (
@@ -22,11 +15,11 @@ export default PreviewLink;
 const StyledA = styled.a`
   position: relative;
   text-decoration: none;
-  width: ${larLength3};
+  width: ${lengths.large[3]};
 `;
 
 const StyledImg = styled.img`
-  border: 1px solid ${disabled};
+  border: 1px solid ${colors.disabled};
   object-fit: cover;
   width: 100%;
 `;
@@ -35,14 +28,14 @@ const Opacidad = styled.div`
   align-items: end;
   background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
   border-radius: 5px;
-  color: ${whiteSacimex};
+  color: ${colors.white};
   display: flex;
-  font-size: ${smaFont};
+  font-size: ${fontSizes.small};
   font-weight: 800;
   height: 100%;
   left: 0;
   opacity: 0;
-  padding: ${smaLength1};
+  padding: ${lengths.small[1]};
   position: absolute;
   top: 0;
   transition: opacity .3s;
@@ -54,11 +47,11 @@ const Opacidad = styled.div`
 `;
 
 const StyledSpan = styled.div`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   font-weight: 800;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: ${larLength3};
+  max-width: ${lengths.large[3]};
 `;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { medLength3, larLength1 } from '../utils/stylesRules';
+import { lengths } from '../utils/stylesRules';
 
 const Section = ({ id, children, background, presentation }) => {
   return (
@@ -16,10 +16,10 @@ const StyledSection = styled.section`
   background-color: ${({ $background }) => $background || 'transparent'};
   display: flex;
   flex-direction: column;
-  gap: ${medLength3};
+  gap: ${lengths.medium[3]};
   justify-content: center;
-  min-height: ${({ $presentation }) => ($presentation ? 'initial' : 'calc(100vh - ' + medLength3 + ')')};
-  padding-bottom: ${larLength1};
+  min-height: ${({ $presentation }) => ($presentation ? 'initial' : 'calc(100vh - ' + lengths.medium[3] + ')')};
+  padding-bottom: ${lengths.large[1]};
   position: relative;
   width: 100%;
   z-index: 20;

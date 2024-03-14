@@ -14,15 +14,7 @@ import PreviewConsejosParaElRegresoAClases from '../assets/img/PreviewConsejosPa
 import PreviewFinanzasJovenes from '../assets/img/PreviewFinanzasJovenes.jpg';
 import PreviewConduguiasYFolletos from '../assets/img/PreviewConduguiasYFolletos.jpg';
 import PreviewCuadernos from '../assets/img/PreviewCuadernos.jpg';
-import {
-  greenSacimex,
-  text,
-  smaLength3,
-  medLength2,
-  medLength3,
-  smaFont,
-  medFont
-} from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const EducacionFinanciera = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
@@ -124,11 +116,11 @@ const PrincipalContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength2};
-  margin-top: ${medLength3};
+  gap: ${lengths.medium[2]};
+  margin-top: ${lengths.medium[3]};
   max-width: 820px;
   opacity: ${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '1' : '0'};
-  padding: 0 0 ${medLength3};
+  padding: 0 0 ${lengths.medium[3]};
   transform: translateY(${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '0' : '-10px'});
   transition: opacity 2s, transform 2s;
   width: 100%;
@@ -138,7 +130,7 @@ const Presentation = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   justify-content: center;
   max-width: 820px;
   width: 100%;
@@ -152,7 +144,7 @@ const TextsContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   width: 100%;
 
   @media (min-width: 850px) {
@@ -161,8 +153,8 @@ const TextsContainer = styled.div`
 `;
 
 const Parrafo = styled.p`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   text-align: center;
   width: 90%;
 
@@ -172,13 +164,13 @@ const Parrafo = styled.p`
 `;
 
 const OpcionesSacimex = styled.span`
-  color: ${greenSacimex};
+  color: ${colors.green};
   font-weight: 800;
 `;
 
 const StyledP = styled.p`
-  color: ${text};
-  font-size: ${medFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.medium};
   text-align: center;
   width: 90%;
 
@@ -190,7 +182,7 @@ const StyledP = styled.p`
 const PreviewsContenedor = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: ${medLength2};
+  gap: ${lengths.medium[2]};
   justify-content: center;
   width: 90%;
 

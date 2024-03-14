@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Boton from '../components/Boton';
 import Animation from '../components/404/Animation';
-import { text, label, smaLength3, larLength3, smaFont, larFont } from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const ErrorPage = () => (
   <MainContainer>
@@ -26,7 +26,7 @@ const MainContainer = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   height: 100vh;
   justify-content: center;
   width: 100%;
@@ -36,30 +36,30 @@ const ContentContainer = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   justify-content: center;
 `;
 
 const AnimationContainer = styled.div`
-  width: ${larLength3};
+  width: ${lengths.large[3]};
 `;
 
 const TextsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   max-width: 350px;
   width: 90%;
 `;
 
 const StyledH3 = styled.h3`
-  color: ${text};
-  font-size: ${larFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.large};
   text-align: center;
 `;
 
 const StyledP = styled.p`
-  color: ${label};
-  font-size: ${smaFont};
+  color: ${colors.label};
+  font-size: ${fontSizes.small};
   text-align: center;
 `;

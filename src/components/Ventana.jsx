@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import { whiteSacimex, label, smaLength2, medLength2, medFont } from '../utils/stylesRules';
 import AvisoPrivacidad from './Ventana/AvisoPrivacidad';
 import UnidadEspecializada from './Ventana/UnidadEspecializada';
 import DenunciaAnonima from './Ventana/DenunciaAnonima';
 import InfoVacante from './OportunidadesDeCarrera/InfoVacante';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const Ventana = ({ windowState, setWindowState, vacanteSeleccionada, jobVacancies, profiles, activeBranch, branches }) => {
   const handleClose = () => {
@@ -43,7 +43,7 @@ const Container = styled.div`
 `;
 
 const Sheet = styled.div`
-  background-color: ${whiteSacimex};
+  background-color: ${colors.white};
   border-radius: 10px;
   height: 100vh;
   left: ${({ $showWindow }) => $showWindow ? '0' : '-350px'};
@@ -70,9 +70,9 @@ const CloseButtonContainer = styled.div`
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);
   border-radius: 10px;
   display: grid;
-  height: ${medLength2};
+  height: ${lengths.medium[2]};
   max-width: 350px;
-  padding-right: ${smaLength2};
+  padding-right: ${lengths.small[2]};
   place-items: center end;
   position: fixed;
   top: 0;
@@ -82,16 +82,16 @@ const CloseButtonContainer = styled.div`
 const CloseButton = styled.button`
   background-color: transparent;
   border: none;
-  color: ${label};
+  color: ${colors.label};
   cursor: pointer;
-  font-size: ${medFont};
+  font-size: ${fontSizes.medium};
 `;
 
 const FinalGradient = styled.div`
   background: linear-gradient(0, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);
   border-radius: 0 0 10px 10px;
   bottom: 0;
-  height: ${medLength2};
+  height: ${lengths.medium[2]};
   max-width: 350px;
   position: fixed;
   width: 100%;

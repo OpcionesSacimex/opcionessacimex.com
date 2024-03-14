@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { greenSacimex, yellowSacimex, whiteSacimex, text, label, smaLength1, smaLength2, smaLength3, medLength1,
-        medLength3, smaFont, medFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const DenunciaAnonima = () => {
   const [stateInp1, setStateInp1] = useState('vacio');
@@ -64,19 +63,19 @@ const Texto = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength2};
-  padding: ${medLength3} ${smaLength3};
+  gap: ${lengths.small[2]};
+  padding: ${lengths.medium[3]} ${lengths.small[3]};
   width: 100%;
 `;
 
 const StyledH3 = styled.h3`
-  color: ${text};
-  font-size: ${medFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.medium};
   text-align: center;
 `;
 
 const Parrafo = styled.p`
-  font-size: ${smaFont};
+  font-size: ${fontSizes.small};
   text-align: center;
   width: 100%;
 `;
@@ -85,7 +84,7 @@ const ContenedorInputs = styled.form`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength1};
+  gap: ${lengths.medium[1]};
   width: 100%;
 `;
 
@@ -95,43 +94,43 @@ const SpanInputContenedor = styled.div`
 `;
 
 const StyledInput = styled.input`
-  border: 2px solid ${label};
+  border: 2px solid ${colors.label};
   border-radius: 25px;
-  font-size: ${smaFont};
+  font-size: ${fontSizes.small};
   outline: none;
-  padding: ${smaLength1} ${smaLength2};
+  padding: ${lengths.small[1]} ${lengths.small[2]};
   transition: border .3s;
   width: 100%;
 
   &:focus {
-    border: 2px solid ${yellowSacimex};
+    border: 2px solid ${colors.yellow};
   };
 `;
 
 const StyledSpan = styled.span`
-  background-color: ${whiteSacimex};
-  font-size: ${smaFont};
-  left: ${smaLength2};
-  padding: 0 ${smaLength1};
+  background-color: ${colors.white};
+  font-size: ${fontSizes.small};
+  left: ${lengths.small[2]};
+  padding: 0 ${lengths.small[1]};
   pointer-events: none;
   position: absolute;
   transition: color .3s, transform .3s, border .3s, top .3s;
 
   ${({ $isVacio }) => $isVacio && (`
-    border-left: 2px solid ${whiteSacimex};
-    border-right: 2px solid ${whiteSacimex};
+    border-left: 2px solid ${colors.white};
+    border-right: 2px solid ${colors.white};
     top: 10px;
   `)}
 
   ${({ $isFocus }) => $isFocus && (`
-    border-left: 2px solid ${yellowSacimex};
-    border-right: 2px solid ${yellowSacimex};
-    color: ${greenSacimex};
+    border-left: 2px solid ${colors.yellow};
+    border-right: 2px solid ${colors.yellow};
+    color: ${colors.green};
   `)}
 
   ${({ $isCompleto }) => $isCompleto && (`
-    border-left: 2px solid ${label};
-    border-right: 2px solid ${label};
+    border-left: 2px solid ${colors.label};
+    border-right: 2px solid ${colors.label};
   `)}
 
   ${({ $isFocus, $isCompleto }) => ($isFocus || $isCompleto) && (`
@@ -140,12 +139,12 @@ const StyledSpan = styled.span`
   `)}
 
   ${({ $isVacio, $isCompleto }) => ($isVacio || $isCompleto) && (`
-    color: ${label};
+    color: ${colors.label};
   `)}
 `;
 
 const StyledTextArea = styled.textarea`
-  border: 2px solid ${label};
+  border: 2px solid ${colors.label};
   border-radius: 25px;
   font-size: 1em;
   height: 150px;
@@ -156,19 +155,19 @@ const StyledTextArea = styled.textarea`
   width: 100%;
 
   &:focus {
-    border: 2px solid ${yellowSacimex};
+    border: 2px solid ${colors.yellow};
   };
 `;
 
 const StyledButton = styled.button`
-  background-color: ${yellowSacimex};
+  background-color: ${colors.yellow};
   border: none;
   border-radius: 5px;
-  color: ${text};
+  color: ${colors.text};
   cursor: pointer;
-  font-size: ${smaFont};
+  font-size: ${fontSizes.small};
   font-weight: 800;
-  padding: ${smaLength1} ${smaLength2};
+  padding: ${lengths.small[1]} ${lengths.small[2]};
   transition: transform .3s;
 
   &:hover {

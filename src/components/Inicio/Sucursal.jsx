@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { greenSacimex, text, disabled, smaLength1, smaLength3, medLength2, larLength3, smaFont, medFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const Sucursal = ({ nombre, direccion, ubicacion, telefono1, telefono2, email, children, activo }) => {
 
@@ -30,13 +30,13 @@ const Sucursal = ({ nombre, direccion, ubicacion, telefono1, telefono2, email, c
 export default Sucursal;
 
 const PrincipalContenedor = styled.li`
-  border-bottom: 1px solid ${disabled};
+  border-bottom: 1px solid ${colors.disabled};
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: ${medLength2} auto;
+  grid-template-rows: ${lengths.medium[2]} auto;
   grid-column-gap: 0;
   grid-row-gap: 0;
-  padding: ${smaLength1};
+  padding: ${lengths.small[1]};
   width: 100%;
 
   @media (min-width: 1000px) {
@@ -49,27 +49,27 @@ const NombreContenedor = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding-right: ${smaLength3};
+  padding-right: ${lengths.small[3]};
   width: 100%;
 `;
 
 const NombreSucursal = styled.p`
-  color: ${greenSacimex};
-  font-size: ${medFont};
+  color: ${colors.green};
+  font-size: ${fontSizes.medium};
 `;
 
 const Info = styled.div`
   display: flex;
   flex-direction: column;
-  height: ${({ $mostrarInfo }) => ($mostrarInfo ? larLength3 : '0')};
+  height: ${({ $mostrarInfo }) => ($mostrarInfo ? lengths.large[3] : '0')};
   justify-content: space-between;
   overflow: hidden;
   transition: height .3s;
 `;
 
 const Direccion = styled.p`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   text-align: justify;
 
   @media (min-width: 1000px) {
@@ -81,11 +81,11 @@ const TelefonosContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength1};
+  gap: ${lengths.small[1]};
   width: 100%;
 `;
 
 const Telefono = styled.a`
-  color: ${({ $mapa }) => ($mapa ? greenSacimex : text)};
-  font-size: ${smaFont};
+  color: ${({ $mapa }) => ($mapa ? colors.green : text)};
+  font-size: ${fontSizes.small};
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { whiteSacimex, smaLength1, medLength1, medLength3, larLength2, larLength3, smaFont } from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
+
 const InformacionEntidades = ({ title, description }) => {
   return (
     <PrincipalContenedor>
@@ -16,29 +17,29 @@ const PrincipalContenedor = styled.div`
   background-color: #005520;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength1};
-  height: ${larLength3};
-  padding: ${medLength1};
+  gap: ${lengths.small[1]};
+  height: ${lengths.large[3]};
+  padding: ${lengths.medium[1]};
   width: 100%;
 
   @media (min-width: 768px) {
-    height: ${larLength2};
+    height: ${lengths.large[2]};
   };
 
   @media (min-width: 850px) {
-    padding: ${medLength1} ${medLength3};
+    padding: ${lengths.medium[1]} ${lengths.medium[3]};
   };
 `;
 
 const Parrafo = styled.p`
-  color: ${whiteSacimex};
-  font-size: ${smaFont};
+  color: ${colors.white};
+  font-size: ${fontSizes.small};
   text-align: justify;
   width: 100%;
 `;
 
 const SubTitulo = styled.p`
-  color: ${whiteSacimex};
-  font-size: ${smaFont};
+  color: ${colors.white};
+  font-size: ${fontSizes.small};
   font-weight: 800;
 `;

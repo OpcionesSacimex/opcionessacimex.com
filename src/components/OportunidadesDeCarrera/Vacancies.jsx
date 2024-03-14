@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { greenSacimex, whiteSacimex, text, disabled, smaLength1, smaLength2, smaLength3, smaFont, medFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const Vacancies = ({ activeBranch, jobVacancies, branches, setWindowState, setVacanteSeleccionada, profiles }) => {
   let selectedBranch = null;
@@ -33,25 +33,25 @@ export default Vacancies;
 
 const VacanciesContainer = styled.div`
   align-items: center;
-  background-color: ${disabled};
+  background-color: ${colors.disabled};
   display: flex;
   flex-direction: column;
-  gap: ${smaLength2};
-  padding: ${smaLength3};
+  gap: ${lengths.small[2]};
+  padding: ${lengths.small[3]};
 `;
 
 const StyledH5 = styled.h5`
-  color: ${greenSacimex};
-  font-size: ${medFont};
+  color: ${colors.green};
+  font-size: ${fontSizes.medium};
   text-align: center;
 `;
 
 const StyledButton = styled.button`
-  background-color: ${whiteSacimex};
+  background-color: ${colors.white};
   border: none;
-  border-radius: ${smaLength1};
+  border-radius: ${lengths.small[1]};
   cursor: pointer;
-  padding: ${smaLength1};
+  padding: ${lengths.small[1]};
   transition: transform .3s, box-shadow .3s;
   width: 100%;
 
@@ -61,8 +61,8 @@ const StyledButton = styled.button`
   };
 
   span {
-    color: ${text};
-    font-size: ${smaFont};
+    color: ${colors.text};
+    font-size: ${fontSizes.small};
     text-align: center;
   };
 `;

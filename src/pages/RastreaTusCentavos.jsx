@@ -9,12 +9,7 @@ import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import { EstilosGlobales, CentrarPrincipalContenedor } from '../utils/estilosPages';
 import ImagenGastosHormiga from '../assets/img/GastosHormiga.svg';
-import {greenSacimex, yellowSacimex, whiteSacimex,
-  text, label, disabled,
-  smaLength1, smaLength2, smaLength3,
-  medLength1, medLength2, medLength3,
-  larLength1, larLength2, larLength3,
-  smaFont, medFont, larFont} from '../utils/stylesRules';
+import { lengths } from '../utils/stylesRules';
 
 const RastreaTusCentavos = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
@@ -47,7 +42,7 @@ const RastreaTusCentavos = () => {
           <StyledP>Nuestra calculadora interactiva te ayuda a rastrear y controlar esos pequeños gastos que suman con el tiempo. 
             ¡Empieza a tomar el control de tus finanzas diarias y ahorra para tus metas más grandes!</StyledP>
           <Imagen
-            tamano={larLength3}
+            tamano={lengths.large[3]}
             imagen={ImagenGastosHormiga}
             alt='Gastos hormiga'/>
         </TextoImagenContenedor>
@@ -67,11 +62,11 @@ const PrincipalContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength1};
-  margin-top: ${medLength3};
+  gap: ${lengths.medium[1]};
+  margin-top: ${lengths.medium[3]};
   max-width: 820px;
   opacity: ${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '1' : '0'};
-  padding: ${medLength1} ${medLength1} ${medLength3};
+  padding: ${lengths.medium[1]} ${lengths.medium[1]} ${lengths.medium[3]};
   transform: translateY(${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '0' : '-10px'});
   transition: opacity 2s, transform 2s;
   width: 100%;
@@ -81,12 +76,12 @@ const TextoImagenContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: ${smaLength1};
+  gap: ${lengths.small[1]};
   justify-content: center;
 `;
 
 const StyledP = styled.p`
   min-width: 300px;
   text-align: justify;
-  width: calc(100% - ${larLength3} - ${smaLength1});
+  width: calc(100% - ${lengths.large[3]} - ${lengths.small[1]});
 `;

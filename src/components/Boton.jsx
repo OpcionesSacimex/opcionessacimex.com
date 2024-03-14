@@ -1,14 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import 'intersection-observer';
 import styled from 'styled-components';
-import {
-  greenSacimex,
-  yellowSacimex,
-  text,
-  smaLength1,
-  smaLength2,
-  smaFont
-} from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const Boton = ({ texto, referencia, amarillo, newBlank }) => (
   <AnimacionEntradaBoton referencia={referencia} amarillo={amarillo} newBlank={newBlank}>
@@ -56,14 +49,14 @@ const AnimacionEntradaBoton = ({ children, referencia, amarillo, newBlank }) => 
 export default Boton;
 
 const BotonContainer = styled.a`
-  background-color: ${({ $amarillo }) => ($amarillo ? yellowSacimex : greenSacimex)};
+  background-color: ${({ $amarillo }) => ($amarillo ? colors.yellow : colors.green)};
   border-radius: 3px;
-  color: ${({ $amarillo }) => ($amarillo ? text : '#FFFFFF')};
+  color: ${({ $amarillo }) => ($amarillo ? colors.text : colors.white)};
   cursor: pointer;
-  font-size: ${smaFont};
+  font-size: ${fontSizes.small};
   font-weight: 800;
   opacity: ${({ $visible }) => ($visible ? '1' : '0')};
-  padding: ${smaLength1} ${smaLength2};
+  padding: ${lengths.small[1]} ${lengths.small[2]};
   text-decoration: none;
   transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: background .3s, opacity 2s, transform 2s;

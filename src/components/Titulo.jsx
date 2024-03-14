@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import 'intersection-observer';
 import styled from 'styled-components';
-import {greenSacimex, yellowSacimex, smaLength1, smaLength2, medLength3, larFont} from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const AnimacionEntradaTitulo = ({ children, color, padding }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,11 +50,11 @@ const Titulo = ({texto, padding, color}) => {
 export default Titulo;
 
 const PrincipalContenedor = styled.h2`
-  color: ${greenSacimex};
-  font-size: ${larFont};
+  color: ${colors.green};
+  font-size: ${fontSizes.large};
   margin: auto;
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
-  padding-bottom: ${smaLength2};
+  padding-bottom: ${lengths.small[2]};
   position: relative;
   text-align: center;
   text-transform: uppercase;
@@ -64,17 +64,17 @@ const PrincipalContenedor = styled.h2`
   width: auto;
 
   &:before {
-    background-color: ${yellowSacimex};
+    background-color: ${colors.yellow};
     content: '';
     display: block;
     height: 3px;
-    margin-bottom: ${smaLength1};
+    margin-bottom: ${lengths.small[1]};
     transition: width 2s;
-    width: ${({ $visible }) => $visible ? medLength3 : '0'};
+    width: ${({ $visible }) => $visible ? lengths.medium[3] : '0'};
   };
 
   &:after {
-    background-color: ${yellowSacimex};
+    background-color: ${colors.yellow};
     bottom: 0;
     content: '';
     display: block;
@@ -83,6 +83,6 @@ const PrincipalContenedor = styled.h2`
     position: absolute;
     right: 0;
     transition: width 2s;
-    width: ${({ $visible }) => $visible ? medLength3 : '0'};
+    width: ${({ $visible }) => $visible ? lengths.medium[3] : '0'};
   };
 `;

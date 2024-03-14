@@ -12,21 +12,7 @@ import somosCredito from '../assets/img/SomosCredito.png';
 import DamasCredito from '../assets/img/Damas.png';
 import EllaSabiduria from '../assets/img/ELLA.png'
 import FotoGrupal from '../assets/img/FotoGrupal.jpg';
-import {
-  greenSacimex,
-  yellowSacimex,
-  whiteSacimex,
-  text,
-  disabled,
-  smaLength1,
-  smaLength2,
-  smaLength3,
-  medLength1,
-  medLength2,
-  medLength3,
-  larLength3,
-  smaFont
-} from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const CreditoGrupal = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
@@ -104,9 +90,9 @@ export default CreditoGrupal;
 const creditoLabels = ['Ella-Sabiduría', 'Da-más crédito', 'Somos crédito'];
 
 const creditoComponentes = [
-  <Imagen tamano={larLength3} imagen={EllaSabiduria} alt='Ella-Sabiduría' />,
-  <Imagen tamano={larLength3} imagen={DamasCredito} alt='Da-Más crédito' />,
-  <Imagen tamano={larLength3} imagen={somosCredito} alt='Somos crédito' />
+  <Imagen tamano={lengths.large[3]} imagen={EllaSabiduria} alt='Ella-Sabiduría' />,
+  <Imagen tamano={lengths.large[3]} imagen={DamasCredito} alt='Da-Más crédito' />,
+  <Imagen tamano={lengths.large[3]} imagen={somosCredito} alt='Somos crédito' />
 ];
 
 const imgExtras = `
@@ -125,12 +111,12 @@ const PrincipalContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap-reverse;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   justify-content: center;
-  margin-top: ${medLength3};
+  margin-top: ${lengths.medium[3]};
   max-width: 820px;
   opacity: ${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '1' : '0'};
-  padding-bottom: ${medLength1};
+  padding-bottom: ${lengths.medium[1]};
   transform: translateY(${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '0' : '-10px'});
   transition: opacity 2s, transform 2s;
   width: 100%;
@@ -144,7 +130,7 @@ const TextsContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   width: 100%;
 
   @media (min-width: 850px) {
@@ -153,9 +139,9 @@ const TextsContainer = styled.div`
 `;
 
 const StyledP = styled.p`
-  color: ${text};
-  font-size: ${smaFont};
-  padding: 0 ${smaLength3};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
+  padding: 0 ${lengths.small[3]};
   text-align: center;
 
   @media (min-width: 850px) {
@@ -163,7 +149,7 @@ const StyledP = styled.p`
   };
 
   b {
-    color: ${greenSacimex};
+    color: ${colors.green};
   };
 `;
 
@@ -171,25 +157,25 @@ const InformacionYBotones = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: ${medLength1};
+  margin-bottom: ${lengths.medium[1]};
   max-width: 820px;
   width: 100%;
 `;
 
 const Botones = styled.div`
   display: flex;
-  gap: ${smaLength1};
+  gap: ${lengths.small[1]};
 `;
 
 const BotonCredito = styled.button`
-  background-color: ${({ $activo }) => $activo ? whiteSacimex : yellowSacimex};
-  border: ${({ $activo }) => $activo ? `1px solid ${disabled}` : 'none'};
+  background-color: ${({ $activo }) => $activo ? colors.white : colors.yellow};
+  border: ${({ $activo }) => $activo ? `1px solid ${colors.disabled}` : 'none'};
   border-radius: 3px;
-  color: ${text};
+  color: ${colors.text};
   ${({ $activo }) => !$activo && 'cursor: pointer;'};  
-  font-size: ${smaFont};
+  font-size: ${fontSizes.small};
   font-weight: 800;
-  padding: ${smaLength1} ${smaLength2};
+  padding: ${lengths.small[1]} ${lengths.small[2]};
   transition: background .3s;
 `;
 
@@ -197,7 +183,7 @@ const Informacion = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength2};
-  padding: ${smaLength3};
+  gap: ${lengths.medium[2]};
+  padding: ${lengths.small[3]};
   width: 100%;
 `;

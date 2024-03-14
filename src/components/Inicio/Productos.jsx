@@ -7,7 +7,7 @@ import Boton from '../Boton';
 import saciAlianza from '../../assets/img/SaciAlianza.png';
 import creditoGrupalLogo from '../../assets/img/CreditoGrupalT.png';
 import creditoIndividualLogo from '../../assets/img/CreditoIndividualT.png';
-import { text, label, smaLength1, medLength3, larLength1, larLength3, smaFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const AnimacionEntradaProductos = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -48,7 +48,7 @@ const Productos = () => {
           <AnimacionEntradaProductos>
             <TituloCredito>Saci-Alianza</TituloCredito>
             <Imagen
-              tamano={larLength1}
+              tamano={lengths.large[1]}
               imagen={saciAlianza}
               alt='Saci-Alianza'
             />
@@ -62,7 +62,7 @@ const Productos = () => {
         <AnimacionEntradaProductos>
           <TituloCredito>Crédito grupal.</TituloCredito>
           <Imagen
-            tamano={larLength1}
+            tamano={lengths.large[1]}
             imagen={creditoGrupalLogo}
             alt='Crédito grupal'
           />
@@ -75,7 +75,7 @@ const Productos = () => {
         <AnimacionEntradaProductos>
           <TituloCredito>Crédito individual.</TituloCredito>
           <Imagen
-            tamano={larLength1}
+            tamano={lengths.large[1]}
             imagen={creditoIndividualLogo}
             alt='Crédito individual'
           />
@@ -95,7 +95,7 @@ export default Productos;
 const Contenido = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${medLength3};
+  gap: ${lengths.medium[3]};
   max-width: 820px;
 
   @media (min-width: 768px) {
@@ -117,23 +117,23 @@ const ProductoContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength1};
+  gap: ${lengths.small[1]};
   justify-content: center;
   opacity: ${({ $visible }) => ($visible ? '1' : '0')};
-  padding: 0 ${smaLength1};
+  padding: 0 ${lengths.small[1]};
   transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
-  width: ${larLength3};
+  width: ${lengths.large[3]};
 `;
 
 const TituloCredito = styled.h3`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   text-align: center;
 `;
 
 const Texto = styled.p`
-  color: ${label};
-  font-size: ${smaFont};
+  color: ${colors.label};
+  font-size: ${fontSizes.small};
   text-align: center;
 `;

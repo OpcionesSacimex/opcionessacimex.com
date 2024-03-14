@@ -7,14 +7,7 @@ import Valores from './Valores';
 import Imagen from '../Imagen';
 import misionLogo from '../../assets/img/MisionLogo.png';
 import visionLogo from '../../assets/img/VisionLogo.png';
-import {
-  greenSacimex,
-  text,
-  smaLength3,
-  larLength1,
-  smaFont,
-  medFont,
-} from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const AnimacionEntradaSucursales = ({ children, id }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -76,7 +69,7 @@ const Conocenos = () => {
         <SubTitulo>Nuestra misión.</SubTitulo>
         <MisionVision>
           <ImagenContenedor>
-            <Imagen tamano={larLength1} imagen={misionLogo} alt='Misión de Sacimex' />
+            <Imagen tamano={lengths.large[1]} imagen={misionLogo} alt='Misión de Sacimex' />
           </ImagenContenedor>
           <MisionVisionTexto>
             Somos una financiera comprometida a impulsar con responsabilidad el
@@ -95,7 +88,7 @@ const Conocenos = () => {
             laboral sano y crecimiento financiero de nuestros clientes.
           </MisionVisionTexto>
           <ImagenContenedor>
-            <Imagen tamano={larLength1} imagen={visionLogo} alt='Visión de Sacimex' />
+            <Imagen tamano={lengths.large[1]} imagen={visionLogo} alt='Visión de Sacimex' />
           </ImagenContenedor>
         </MisionVision>
       </AnimacionEntradaSucursales>
@@ -109,7 +102,7 @@ const InfoExtraContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   height: auto;
   max-width: 820px;
   opacity: ${({ $visible }) => ($visible ? '1' : '0')};
@@ -119,14 +112,14 @@ const InfoExtraContenedor = styled.div`
 `;
 
 const SubTitulo = styled.h3`
-  color: ${greenSacimex};
-  font-size: ${medFont};
+  color: ${colors.green};
+  font-size: ${fontSizes.medium};
   font-weight: 400;
 `;
 
 const Texto = styled.p`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   text-align: justify;
   width: 90%;
 `;
@@ -144,8 +137,8 @@ const ImagenContenedor = styled.div`
 `;
 
 const MisionVisionTexto = styled.p`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   text-align: justify;
   width: 70%;
 

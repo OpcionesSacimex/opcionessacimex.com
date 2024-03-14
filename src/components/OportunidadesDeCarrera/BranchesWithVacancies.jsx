@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { yellowSacimex, whiteSacimex, text, disabled, smaLength1, smaFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const BranchesWithVacancies = ({ branches, jobVacancies, activeBranch, setActiveBranch, scrollToElement }) => {
   const [selectedBranches, setSelectedBranches] = useState(null);
@@ -40,12 +40,12 @@ const PrincipalContainer = styled.div`
 `;
 
 const BranchContainer = styled.button`
-  background-color: ${({ $activeBranch }) => $activeBranch ? yellowSacimex : whiteSacimex};
-  border: 1px solid ${disabled};
-  color: ${text};
+  background-color: ${({ $activeBranch }) => $activeBranch ? colors.yellow : colors.white};
+  border: 1px solid ${colors.disabled};
+  color: ${colors.text};
   cursor: pointer;
-  font-size: ${smaFont};
-  padding: ${smaLength1};
+  font-size: ${fontSizes.small};
+  padding: ${lengths.small[1]};
   transition: background .3s;
 
   ${({ $activeBranch }) => !$activeBranch && (`
@@ -56,6 +56,6 @@ const BranchContainer = styled.button`
 `;
 
 const StyledP = styled.p`
-  color: ${text};
+  color: ${colors.text};
   font-weight: 700;
 `;

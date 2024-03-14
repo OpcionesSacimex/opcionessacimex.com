@@ -12,19 +12,7 @@ import paso1 from '../assets/img/Paso1.png';
 import paso2 from '../assets/img/Paso2.png';
 import paso3 from '../assets/img/Paso3.png';
 import paso4 from '../assets/img/Paso4.png';
-import {
-  greenSacimex,
-  text,
-  label,
-  smaLength1,
-  medLength1,
-  medLength2,
-  medLength3,
-  larLength1,
-  larLength3,
-  smaFont,
-  medFont,
-} from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const SolicitaCredito = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
@@ -63,30 +51,13 @@ const SolicitaCredito = () => {
           </Parrafo>
           <SubTitulo $mostrarAnimaciones={mostrarAnimaciones}>¡Consigue tu crédito en cuatro sencillos pasos!</SubTitulo>
           <PasosContenedor $mostrarAnimaciones={mostrarAnimaciones}>
-            <Paso>
-              <PasoTitulo>1. Ingresa a SaciAlianza</PasoTitulo>
-              <Imagen tamano={larLength1} imagen={paso1} />
-              <PasoTexto>
-                Inicia tu proceso ingresando a nuestra página <LinkSaci href='http://convenio.opcionessacimex.com/'>Saci-Alianza</LinkSaci>.
-              </PasoTexto>
-            </Paso>
-            <Paso>
-              <PasoTitulo>2. Completa tu solicitud en línea.</PasoTitulo>
-              <Imagen tamano={larLength1} imagen={paso2} />
-              <PasoTexto>Proporciona tus datos a través de un formulario en línea.</PasoTexto>
-            </Paso>
-            <Paso>
-              <PasoTitulo>3. Elige una forma de contacto.</PasoTitulo>
-              <Imagen tamano={larLength1} imagen={paso3} />
-              <PasoTexto>Elige una forma de contacto para que uno de nuestros asesores se comunique contigo.</PasoTexto>
-            </Paso>
-            <Paso>
-              <PasoTitulo>4. Recibe tu dinero rápidamente.</PasoTitulo>
-              <Imagen tamano={larLength1} imagen={paso4} />
-              <PasoTexto>
-                Una vez que el asesor haya revisado la solicitud y aprobado el crédito, el último paso es recibir el dinero solicitado.
-              </PasoTexto>
-            </Paso>
+            {datosPasos.map((item, index) => (
+              <Paso key={index}>
+                <PasoTitulo>{item.titulo}</PasoTitulo>
+                <Imagen tamano={lengths.large[1]} imagen={item.imagen} />
+                <PasoTexto>{item.texto}</PasoTexto>
+              </Paso>
+            ))}
           </PasosContenedor>
           <Boton amarillo texto='Inicia aquí' referencia='http://convenio.opcionessacimex.com/' />
           <TextoFinal $padding>
@@ -103,21 +74,44 @@ const SolicitaCredito = () => {
 
 export default SolicitaCredito;
 
+const datosPasos = [
+  {
+    titulo : '1. Ingresa a SaciAlianza.',
+    texto : `Inicia tu proceso ingresando a nuestra página ${<LinkSaci href='http://convenio.opcionessacimex.com/'>Saci-Alianza</LinkSaci>}.`,
+    imagen : paso1
+  },
+  {
+    titulo : '2. Completa tu solicitud en línea.',
+    texto : 'Proporciona tus datos a través de un formulario en línea.',
+    imagen : paso2
+  },
+  {
+    titulo : '3. Elige una forma de contacto.',
+    texto : 'Elige una forma de contacto para que uno de nuestros asesores se comunique contigo.',
+    imagen : paso3
+  },
+  {
+    titulo : '4. Recibe tu dinero rápidamente.',
+    texto : 'Una vez que el asesor haya revisado la solicitud y aprobado el crédito, el último paso es recibir el dinero solicitado.',
+    imagen : paso4
+  }
+];
+
 const PrincipalContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength3};
+  gap: ${lengths.medium[3]};
   justify-content: center;
-  margin-top: ${medLength3};
+  margin-top: ${lengths.medium[3]};
   max-width: 990px;
-  padding: ${medLength1} 0;
+  padding: ${lengths.medium[1]} 0;
   width: 100%;
 `;
 
 const SubTitulo = styled.h3`
-  color: ${text};
-  font-size: ${medFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.medium};
   opacity: ${({ $mostrarAnimaciones }) => ($mostrarAnimaciones ? '1' : '0')};
   text-align: center;
   transform: translateY(${({ $mostrarAnimaciones }) => ($mostrarAnimaciones ? '0' : '-10px')});
@@ -129,10 +123,10 @@ const PasosContenedor = styled.ul`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength2};
+  gap: ${lengths.medium[2]};
   list-style: none;
   opacity: ${({ $mostrarAnimaciones }) => ($mostrarAnimaciones ? '1' : '0')};
-  padding: 0 ${medLength1};
+  padding: 0 ${lengths.medium[1]};
   transform: translateY(${({ $mostrarAnimaciones }) => ($mostrarAnimaciones ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
 
@@ -141,7 +135,7 @@ const PasosContenedor = styled.ul`
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: ${medLength2};
+    gap: ${lengths.medium[2]};
   }
 `;
 
@@ -149,30 +143,30 @@ const Paso = styled.li`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength1};
-  width: ${larLength3};
+  gap: ${lengths.small[1]};
+  width: ${lengths.large[3]};
 `;
 
 const PasoTitulo = styled.h4`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   font-weight: 400;
   text-align: center;
 `;
 
 const PasoTexto = styled.p`
-  color: ${label};
-  font-size: ${smaFont};
+  color: ${colors.label};
+  font-size: ${fontSizes.small};
   text-align: center;
 `;
 
 const LinkSaci = styled.a`
-  color: ${greenSacimex};
+  color: ${colors.green};
 `;
 
 const Parrafo = styled.p`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   max-width: 800px;
   opacity: ${({ $mostrarAnimaciones }) => ($mostrarAnimaciones ? '1' : '0')};
   text-align: justify;
@@ -182,9 +176,9 @@ const Parrafo = styled.p`
 `;
 
 const TextoFinal = styled.p`
-  color: ${label};
-  font-size: ${smaFont};
+  color: ${colors.label};
+  font-size: ${fontSizes.small};
   font-weight: 800;
-  padding: 0 ${medLength1};
+  padding: 0 ${lengths.medium[1]};
   text-align: center;
 `;

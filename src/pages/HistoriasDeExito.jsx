@@ -8,15 +8,7 @@ import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import { EstilosGlobales, CentrarPrincipalContenedor } from '../utils/estilosPages';
 import Constructor from '../assets/img/Constructor.svg';
-import {
-  greenSacimex,
-  text,
-  smaLength1,
-  medLength1,
-  medLength3,
-  smaFont,
-  medFont
-} from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const HistoriasDeExito = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
@@ -72,18 +64,18 @@ const PrincipalContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength1};
+  gap: ${lengths.medium[1]};
   justify-content: flex-start;
-  margin-top: ${medLength3};
+  margin-top: ${lengths.medium[3]};
   max-width: 820px;
   opacity: ${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '1' : '0'};
-  padding: ${medLength1} ${medLength1} ${medLength3};
+  padding: ${lengths.medium[1]} ${lengths.medium[1]} ${lengths.medium[3]};
   transform: translateY(${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '0' : '-10px'});
   transition: opacity 2s, transform 2s;
   width: 100%;
 
   @media (min-width: 880px) {
-    padding: ${medLength1} 0 ${medLength3};
+    padding: ${lengths.medium[1]} 0 ${lengths.medium[3]};
   };
 `;
 
@@ -91,25 +83,25 @@ const ImagenTextoContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: ${smaLength1};
+  gap: ${lengths.small[1]};
   justify-content: center;
 `;
 
 const Parrafo = styled.p`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
   min-width: 300px;
   text-align: center;
-  width: calc(100% - 300px - ${smaLength1});
+  width: calc(100% - 300px - ${lengths.small[1]});
 
   b {
-    color: ${greenSacimex};
+    color: ${colors.green};
   };
 `;
 
 const StyledP = styled.p`
-  color: ${text};
-  font-size: ${medFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.medium};
   text-align: center;
   width: 90%;
 `;

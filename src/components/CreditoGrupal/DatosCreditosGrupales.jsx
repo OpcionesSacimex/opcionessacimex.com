@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { yellowSacimex, label, smaLength1, smaLength2, smaFont, medFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const CreditGroupData = ({ creditActive }) => {
   return(<>
@@ -98,8 +98,8 @@ const CreditGroupData = ({ creditActive }) => {
 export default CreditGroupData;
 
 const Paragraph = styled.p`
-  color: ${label};
-  font-size: ${smaFont};
+  color: ${colors.label};
+  font-size: ${fontSizes.small};
   text-align: justify;
   width: 100%;
 `;
@@ -125,26 +125,26 @@ const SomosSpan = styled(StyledSpan)`
 
 const StyledList = styled.ul`
   list-style: none;
-  padding: 0 ${smaLength2};
+  padding: 0 ${lengths.small[2]};
   text-align: justify;
   width: 100%;
 
   li {
-    color: ${label};
-    font-size: ${smaFont};
-    padding-bottom: ${smaLength1};
+    color: ${colors.label};
+    font-size: ${fontSizes.small};
+    padding-bottom: ${lengths.small[1]};
   }
 
   li::before {
-    color: ${yellowSacimex};
+    color: ${colors.yellow};
     content: "»";
-    font-size: ${medFont};
-    margin-right: ${smaLength1};
+    font-size: ${fontSizes.medium};
+    margin-right: ${lengths.small[1]};
   }
 `;
 
 const StyledHeading = styled.h3`
-  color: ${label};
-  font-size: ${smaFont};
+  color: ${colors.label};
+  font-size: ${fontSizes.small};
   text-align: center;
 `;

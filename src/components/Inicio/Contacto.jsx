@@ -5,7 +5,7 @@ import Titulo from '../Titulo';
 import Sucursal from './Sucursal';
 import { datosSucursales } from '../../utils/datos';
 import { BsChevronDoubleDown, BsChevronDoubleUp } from 'react-icons/bs';
-import { yellowSacimex, smaLength1, smaLength3, smaFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const AnimacionEntradaSucursales = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -85,10 +85,10 @@ const SeccionSucursal = styled.ul`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength3};
+  gap: ${lengths.small[3]};
   max-width: 820px;
   opacity: ${({ $visible }) => ($visible ? '1' : '0')};
-  padding: ${smaLength1};
+  padding: ${lengths.small[1]};
   transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
   width: 80%;
@@ -103,16 +103,16 @@ const SeccionSucursal = styled.ul`
 `;
 
 const Flecha = styled.button`
-  background-color: ${yellowSacimex};
+  background-color: ${colors.yellow};
   border: none;
   border-radius: 50%;
   cursor: pointer;
   display: grid;
-  font-size: ${smaFont};
-  height: ${smaLength3};
+  font-size: ${fontSizes.small};
+  height: ${lengths.small[3]};
   place-items: center;
   transition: transform .3s;
-  width: ${smaLength3};
+  width: ${lengths.small[3]};
 
   &:hover {
     transform: scale(105%);

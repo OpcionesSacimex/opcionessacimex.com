@@ -9,7 +9,7 @@ import Vacancies from '../components/OportunidadesDeCarrera/Vacancies';
 import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import { EstilosGlobales, CentrarPrincipalContenedor, BloquearScroll } from '../utils/estilosPages';
-import { disabled, smaLength1, medLength1, medLength3, medFont } from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 import OportunidadesDeCarrera from '../assets/img/OportunidadesDeCarrera.svg';
 
 const BolsaDeTrabajo = () => {
@@ -122,18 +122,18 @@ const PrincipalContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${medLength1};
+  gap: ${lengths.medium[1]};
   justify-content: flex-start;
-  margin-top: ${medLength3};
+  margin-top: ${lengths.medium[3]};
   max-width: 820px;
   opacity: ${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '1' : '0'};
-  padding: ${medLength1} ${medLength1} ${medLength3} ${medLength1};
+  padding: ${lengths.medium[1]} ${lengths.medium[1]} ${lengths.medium[3]} ${lengths.medium[1]};
   transform: translateY(${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '0' : '-10px'});
   transition: opacity 2s, transform 2s;
   width: 100%;
 
   @media (min-width: 880px) {
-    padding: ${medLength1} 0 ${medLength3} 0;
+    padding: ${lengths.medium[1]} 0 ${lengths.medium[3]} 0;
   };
 `;
 
@@ -141,7 +141,7 @@ const ImagenTextoContenedor = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: ${smaLength1};
+  gap: ${lengths.small[1]};
   justify-content: center;
 `;
 
@@ -150,17 +150,17 @@ const ContenedorTextos = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 300px;
-  width: calc(100% - 300px - ${smaLength1});
+  width: calc(100% - 300px - ${lengths.small[1]});
 `;
 
 const Parrafo = styled.p`
-  font-size: ${medFont};
+  font-size: ${fontSizes.medium};
   text-align: justify;
   width: 100%;
 `;
 
 const Tabla = styled.div`
-  border: 1px solid ${disabled};
+  border: 1px solid ${colors.disabled};
   border-radius: 10px;
   display: grid;
   grid-template-columns: 0.5fr 1fr;

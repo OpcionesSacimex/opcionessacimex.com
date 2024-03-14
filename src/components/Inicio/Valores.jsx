@@ -4,7 +4,7 @@ import Imagen from '../Imagen';
 import honestidadImagen from '../../assets/img/Honestidad.png';
 import respetoImagen from '../../assets/img/Respeto.png';
 import compromisoImagen from '../../assets/img/Compromiso.png';
-import { text, label, smaLength1, medLength2, larLength1, larLength3, smaFont } from '../../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const AnimacionEntradaValor = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,7 +43,7 @@ const Valores = () => {
         <AnimacionEntradaValor key={index}>
           <ValorTitle>{item.titulo}</ValorTitle>
           <Imagen
-            tamano={larLength1}
+            tamano={lengths.large[1]}
             imagen={item.imagen}
             alt={item.titulo}
           />
@@ -77,7 +77,7 @@ const valoresDatos = [
 const MainContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: ${medLength2};
+  gap: ${lengths.medium[2]};
   justify-content: center;
   list-style: none;
   max-width: 1000px;
@@ -94,8 +94,8 @@ const ValorContainer = styled.li`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength1};
-  max-width: ${larLength3};
+  gap: ${lengths.small[1]};
+  max-width: ${lengths.large[3]};
   opacity: ${({ $visible }) => ($visible ? '1' : '0')};
   transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
@@ -103,12 +103,12 @@ const ValorContainer = styled.li`
 `;
 
 const ValorTitle = styled.h4`
-  color: ${text};
-  font-size: ${smaFont};
+  color: ${colors.text};
+  font-size: ${fontSizes.small};
 `;
 
 const ValorText = styled.p`
-  color: ${label};
-  font-size: ${smaFont};
+  color: ${colors.label};
+  font-size: ${fontSizes.small};
   text-align: center;
 `;

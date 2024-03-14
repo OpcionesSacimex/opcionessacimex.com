@@ -8,18 +8,7 @@ import InformacionEntidades from './InformacionEntidades';
 import sacimexLogo from '../assets/img/SacimexLogoBlanco.png';
 import SolicitudAclaracionOpcionesSacimex from '../assets/documents/Solicitud-aclaracion-Opciones-Sacimex.pdf';
 import DatosEntidades from '../components/Footer/datosEntidades.json';
-import {
-  greenSacimex,
-  whiteSacimex,
-  smaLength1,
-  smaLength3,
-  medLength1,
-  medLength2,
-  medLength3,
-  larLength2,
-  larLength3,
-  smaFont
-} from '../utils/stylesRules';
+import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const Footer = ({ setWindowState }) => {
   const [entidadActivo, setEntidadActivo] = useState(0);
@@ -46,9 +35,9 @@ const Footer = ({ setWindowState }) => {
         ))}
       </AnimacionEntradaRedes>
       <Imagen
-        tamano={larLength2}
+        tamano={lengths.large[2]}
         imagen={sacimexLogo}
-        extras={`margin-bottom: ${medLength1};`}
+        extras={`margin-bottom: ${lengths.medium[1]};`}
         alt='Sacimex Logo'
       />
       <AcercaDeContenedor $textos>
@@ -162,37 +151,37 @@ const StyledDiv = styled.div`
 
 const PrincipalContenedor = styled.footer`
   align-items: center;
-  background-color: ${greenSacimex};
+  background-color: ${colors.green};
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: ${medLength1};
+  padding-top: ${lengths.medium[1]};
   position: relative;
   z-index: 100;
 `;
 
 const RedesContenedor = styled.ul`
   display: flex;
-  gap: ${medLength1};
+  gap: ${lengths.medium[1]};
   list-style: none;
-  margin-bottom: ${medLength1};
+  margin-bottom: ${lengths.medium[1]};
 
   @media (min-width: 850px) {
     background-color: rgba(0, 0, 0, .50);
-    bottom: ${medLength2};
+    bottom: ${lengths.medium[2]};
     clip-path: polygon(0% 0%, 80% 0, 100% 50%, 80% 100%, 0% 100%);
     flex-direction: column;
     gap: 0;
-    height: ${larLength2};
+    height: ${lengths.large[2]};
     justify-content: space-around;
     left: 0;
     margin: 0;
     opacity: ${({ $visible }) => $visible ? '1' : '0'};
-    padding-left: ${smaLength1};
+    padding-left: ${lengths.small[1]};
     position: fixed;
     transform: translateX(${({ $visible }) => $visible ? '0' : '-10px'});
     transition: opacity 2s, transform 2s;
-    width: ${medLength3};
+    width: ${lengths.medium[3]};
     z-index: 20;
   };
 
@@ -206,11 +195,11 @@ const RedesContenedor = styled.ul`
 `;
 
 const Redes = styled.a`
-  color: ${whiteSacimex};
+  color: ${colors.white};
   text-decoration: none;
 
   svg {
-    font-size: ${smaLength3};
+    font-size: ${lengths.small[3]};
   };
 `;
 
@@ -225,8 +214,8 @@ const AcercaDeContenedor = styled.div`
   };
 
   ${({ $textos }) => $textos && css`
-    gap: ${medLength2};
-    padding: 0 ${smaLength1};
+    gap: ${lengths.medium[2]};
+    padding: 0 ${lengths.small[1]};
   `};
 `;
 
@@ -234,23 +223,23 @@ const TextosAcercaDeContenedor = styled.ul`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: ${smaLength1};
+  gap: ${lengths.small[1]};
   list-style: none;
-  max-width: ${larLength3};
+  max-width: ${lengths.large[3]};
   width: 45%;
 `;
 
 const TitulosAcercaDe = styled.p`
-  color: ${whiteSacimex};
-  font-size: ${smaFont};
+  color: ${colors.white};
+  font-size: ${fontSizes.small};
   font-weight: 800;
   text-align: center;
 `;
 
 const TextoAcercaDe = styled.a`
-  color: ${whiteSacimex};
+  color: ${colors.white};
   cursor: pointer;
-  font-size: ${smaFont};
+  font-size: ${fontSizes.small};
   text-align: center;
   text-decoration: none;
 `;
