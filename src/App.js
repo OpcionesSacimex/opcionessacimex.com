@@ -1,4 +1,5 @@
 import React from 'react';
+import {NextUIProvider} from "@nextui-org/react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Inicio from './pages/Inicio';
 import SolicitaCredito from './pages/SaciAlianza';
@@ -14,6 +15,7 @@ import ErrorPage from './pages/404';
 
 const App = () => {
   return (
+    <NextUIProvider>
     <Router>
       <Routes>
         <Route path='/' element={<RedireccionarAInicio/>}/>
@@ -30,6 +32,7 @@ const App = () => {
         <Route path='/404' element={<ErrorPage/>}/>
       </Routes>
     </Router>
+    </NextUIProvider>
   );
 };
 

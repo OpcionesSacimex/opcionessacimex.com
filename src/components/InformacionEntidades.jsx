@@ -14,7 +14,7 @@ const InformacionEntidades = ({ title, description }) => {
 export default InformacionEntidades;
 
 const PrincipalContenedor = styled.div`
-  background-color: #005520;
+  background-color: ${colors.green};
   display: flex;
   flex-direction: column;
   gap: ${lengths.small[1]};

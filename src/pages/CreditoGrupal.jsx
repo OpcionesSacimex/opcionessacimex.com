@@ -30,7 +30,7 @@ const CreditoGrupal = () => {
 
   return (
     <>
-      <EstilosGlobales $evitarScroll={evitarScroll} />
+      <EstilosGlobales/>
       <Helmet>
         <meta
           name='description'

@@ -1,27 +1,20 @@
-import { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 import Header from '../components/Header';
-import Titulo from '../components/Titulo';
-import Imagen from '../components/Imagen';
-import BranchesWithVacancies from '../components/OportunidadesDeCarrera/BranchesWithVacancies';
-import Vacancies from '../components/OportunidadesDeCarrera/Vacancies';
-import Footer from '../components/Footer';
-import Ventana from '../components/Ventana';
-import { EstilosGlobales, CentrarPrincipalContenedor, BloquearScroll } from '../utils/estilosPages';
-import { colors, lengths, fontSizes } from '../utils/stylesRules';
-import OportunidadesDeCarrera from '../assets/img/OportunidadesDeCarrera.svg';
+import Sucursales from '../components/OportunidadesDeCarrera/Sucursales';
+import Vacantes from '../components/OportunidadesDeCarrera/Vacantes';
+import { EstilosGlobales, BloquearScroll } from '../utils/estilosPages';
+import { colors, fontSizes, lengths, fontWeights } from '../utils/stylesRules';
 
 const BolsaDeTrabajo = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
   const [windowState, setWindowState] = useState(null);
+  const [sucursalSeleccionada, setSucursalSeleccionada] = useState();
   const [jobVacancies, setJobVacancies] = useState([]);
   const [branches, setBranches] = useState(null);
   const [profiles, setProfiles] = useState([]);
-  const [vacanteSeleccionada, setVacanteSeleccionada] = useState(null);
-  const [activeBranch, setActiveBranch] = useState(null);
-
-  const elementToScroll = useRef(null);
+  const [nombreSucursal, setNombreSucursal] = useState();
 
   useEffect(() => {
     fetchDbData('VacantController', 'all', setJobVacancies);
@@ -47,125 +40,141 @@ const BolsaDeTrabajo = () => {
     }
   };
 
-  const scrollToElement = () => {
-    if (elementToScroll.current) {
-      const offset = 30;
-      const elementPosition = elementToScroll.current.offsetTop - offset;
-
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  return(<>
-    <EstilosGlobales/>
-    <BloquearScroll $evitarScroll={windowState}/>
-    <Helmet>
-      <meta
-        name='description'
-        content='Explora nuestras oportunidades de trabajo y únete a nosotros en el camino hacia el éxito mutuo.'/>
-      <title>Opciones Sacimex - Oportunidades de carrera</title>
-    </Helmet>
-    <Header
-      mostrarAnimaciones={mostrarAnimaciones}
-      barraVerde/>
-    <CentrarPrincipalContenedor>
-      <PrincipalContenedor $mostrarAnimaciones={mostrarAnimaciones}>
-        <Titulo texto='Oportunidades'/>
-        <ImagenTextoContenedor>
-          <ContenedorTextos>
-            <Parrafo>Explora nuestras oportunidades y únete a nosotros en el camino hacia el éxito mutuo. Tu 
-            próximo paso profesional comienza aquí.</Parrafo>
-          </ContenedorTextos>
-          <Imagen
-            tamano='300px'
-            imagen={OportunidadesDeCarrera}/>
-        </ImagenTextoContenedor>
-        
-        {jobVacancies.length !== 0 && branches !== null && (
-        <Tabla ref={elementToScroll}>
-          <BranchesWithVacancies
-            branches={branches}
-            jobVacancies={jobVacancies}
-            activeBranch={activeBranch}
-            setActiveBranch={setActiveBranch}
-            scrollToElement={scrollToElement}/>
-          <Vacancies
-            activeBranch={activeBranch}
-            jobVacancies={jobVacancies}
-            branches={branches}
-            setWindowState={setWindowState}
-            setVacanteSeleccionada={setVacanteSeleccionada}
-            profiles={profiles}/>
-        </Tabla>
-        )}
-      </PrincipalContenedor>
-    </CentrarPrincipalContenedor>
-    <Footer
-      setWindowState={setWindowState}/>
-    <Ventana
-      windowState={windowState}
-      setWindowState={setWindowState}
-      vacanteSeleccionada={vacanteSeleccionada}
-      jobVacancies={jobVacancies}
-      profiles={profiles}
-      activeBranch={activeBranch}
-      branches={branches}/>
-  </>);
+  return(
+    <>
+      <EstilosGlobales/>
+      <BloquearScroll $evitarScroll={windowState}/>
+      <Helmet>
+        <meta
+          name='description'
+          content='Explora nuestras oportunidades de trabajo y únete a nosotros en el camino hacia el éxito mutuo.'
+        />        
+        <title>Opciones Sacimex - Bolsa de trabajo</title>
+      </Helmet>      
+      <Header
+        mostrarAnimaciones={mostrarAnimaciones}
+        barraVerde
+      />
+      <Principal>
+        <Textos>
+          <Titulo>Nuestras vacantes</Titulo>
+          <Parrafo>Descubre las múltiples oportunidades que te esperan y únete a nuestra comunidad en el camino hacia el éxito 
+            compartido. ¡Te invitamos a dar el primer paso hacia tu futuro!</Parrafo>
+        </Textos>
+        <ContenedorInformacion>
+          <ContenedorSucursales>
+            {branches !== null && jobVacancies.length !== 0 && (
+              <Sucursales
+                branches={branches}
+                jobVacancies={jobVacancies}
+                setSucursalSeleccionada={setSucursalSeleccionada}
+                setNombreSucursal={setNombreSucursal}
+                setBranches={setBranches}
+              />
+            )}
+          </ContenedorSucursales>
+          <ContenedorVacantes>            
+            <NombreSucursal>{nombreSucursal}</NombreSucursal>
+            {profiles.length !== 0 && jobVacancies.length !== 0 && branches !== null && (
+              <Vacantes
+                profiles={profiles}
+                jobVacancies={jobVacancies}
+                sucursalSeleccionada={sucursalSeleccionada}
+                branches={branches}
+              />
+            )}
+          </ContenedorVacantes>
+        </ContenedorInformacion>
+      </Principal>
+    </>
+  );
 };
 
 export default BolsaDeTrabajo;
 
-const PrincipalContenedor = styled.div`
-  align-items: center;
+const Principal = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${lengths.medium[1]};
-  justify-content: flex-start;
+  gap: ${lengths.small[3]};
   margin-top: ${lengths.medium[3]};
-  max-width: 820px;
-  opacity: ${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '1' : '0'};
-  padding: ${lengths.medium[1]} ${lengths.medium[1]} ${lengths.medium[3]} ${lengths.medium[1]};
-  transform: translateY(${({ $mostrarAnimaciones }) => $mostrarAnimaciones ? '0' : '-10px'});
-  transition: opacity 2s, transform 2s;
+  padding: ${lengths.small[2]} ${lengths.small[1]} 0;
   width: 100%;
 
-  @media (min-width: 880px) {
-    padding: ${lengths.medium[1]} 0 ${lengths.medium[3]} 0;
+  @media (min-width: 481px) {
+    padding: ${lengths.small[2]} ${lengths.small[2]} 0;
+  };
+
+  @media (min-width: 769px) {
+    padding: ${lengths.small[2]} ${lengths.medium[3]} 0;
   };
 `;
 
-const ImagenTextoContenedor = styled.div`
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${lengths.small[1]};
-  justify-content: center;
-`;
-
-const ContenedorTextos = styled.div`
-  align-items: center;
+const Textos = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 300px;
-  width: calc(100% - 300px - ${lengths.small[1]});
+  gap: ${lengths.small[1]};
+  height: 30px;
+
+  @media (min-width: 769px) {
+    height: 100px;
+  };
+`;
+
+const Titulo = styled.p`
+  color: ${colors.green};
+  font-size: ${fontSizes.large};
+  font-weight: ${fontWeights.black};
+  text-align: center;
+
+  @media (min-width: 769px) {
+    text-align: left;
+  };
 `;
 
 const Parrafo = styled.p`
+  color: ${colors.label};
+  display: none;
   font-size: ${fontSizes.medium};
-  text-align: justify;
+  max-width: 600px;
+  text-align: left;
+
+  @media (min-width: 769px) {
+    display: block;
+  };
+`;
+
+const ContenedorInformacion = styled.div`
+  display: flex;
   width: 100%;
 `;
 
-const Tabla = styled.div`
-  border: 1px solid ${colors.disabled};
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: auto;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  width: 100%;
+const ContenedorSucursales = styled.div`
+  border-right: 1px solid ${colors.disabled};
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  width: 50%;
+
+  @media (min-width: 769px) {
+    height: calc(100vh - 220px);
+    width: 25%;
+  };
+`;
+
+const ContenedorVacantes = styled.div`
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  width: 50%;
+
+  @media (min-width: 769px) {
+    height: calc(100vh - 220px);
+    width: 75%;
+  };
+`;
+
+const NombreSucursal = styled.p`
+  color: ${colors.green};
+  font-size: ${fontSizes.medium};
+  font-weight: ${fontWeights.bold};
+  padding-bottom: ${lengths.small[2]};
+  padding-left: ${lengths.small[2]};
 `;

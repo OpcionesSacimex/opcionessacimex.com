@@ -1,6 +1,6 @@
 export const colors = {
   green: '#00632F',
-  yellow: '#0077B6',
+  yellow: '#F5A200',
   white: '#FFFFFF',
   text: '#000000',
   label: '#565360',
@@ -29,4 +29,11 @@ export const fontSizes = {
   small: '14px',
   medium: '18px',
   large: '24px',
+};
+
+export const fontWeights = {
+  light: '300',
+  regular: '400',
+  bold : '700',
+  black: '900',
 };
