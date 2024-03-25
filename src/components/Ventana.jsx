@@ -4,10 +4,9 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import AvisoPrivacidad from './Ventana/AvisoPrivacidad';
 import UnidadEspecializada from './Ventana/UnidadEspecializada';
 import DenunciaAnonima from './Ventana/DenunciaAnonima';
-import InfoVacante from './OportunidadesDeCarrera/InfoVacante';
 import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
-const Ventana = ({ windowState, setWindowState, vacanteSeleccionada, jobVacancies, profiles, activeBranch, branches }) => {
+const Ventana = ({ windowState, setWindowState }) => {
   const handleClose = () => {
     setWindowState(null);
   };
@@ -23,7 +22,6 @@ const Ventana = ({ windowState, setWindowState, vacanteSeleccionada, jobVacancie
         {windowState === 1 && <AvisoPrivacidad />}
         {windowState === 2 && <UnidadEspecializada />}
         {windowState === 3 && <DenunciaAnonima />}
-        {windowState === 4 && <InfoVacante vacanteSeleccionada={vacanteSeleccionada} jobVacancies={jobVacancies} profiles={profiles} activeBranch={activeBranch} branches={branches} />}
         <FinalGradient />
       </Sheet>
       <Opacity $showWindow={windowState} onClick={handleClose} />
