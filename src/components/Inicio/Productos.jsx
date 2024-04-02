@@ -5,8 +5,8 @@ import Titulo from '../Titulo';
 import Imagen from '../Imagen';
 import Boton from '../Boton';
 import saciAlianza from '../../assets/img/SaciAlianza.png';
-import creditoGrupalLogo from '../../assets/img/CreditoGrupalT.png';
-import creditoIndividualLogo from '../../assets/img/CreditoIndividualT.png';
+import { ReactComponent as CreditoGrupalLogo } from '../../assets/img/CreditoGrupalT.svg';
+import { ReactComponent as CreditoIndividualLogo } from '../../assets/img/CreditoIndividualT.svg';
 import { colors, lengths, fontSizes } from '../../utils/stylesRules';
 
 const AnimacionEntradaProductos = ({ children }) => {
@@ -61,11 +61,7 @@ const Productos = () => {
         </ContenidoCentradoSaciAlianza>
         <AnimacionEntradaProductos>
           <TituloCredito>Crédito grupal.</TituloCredito>
-          <Imagen
-            tamano={lengths.large[1]}
-            imagen={creditoGrupalLogo}
-            alt='Crédito grupal'
-          />
+          <CreditoGrupalLogo/>
           <Texto>Brindamos soluciones financieras a grupos de personas comprometidas con actividades productivas.</Texto>
           <Boton
             texto='Conoce más'
@@ -74,11 +70,7 @@ const Productos = () => {
         </AnimacionEntradaProductos>
         <AnimacionEntradaProductos>
           <TituloCredito>Crédito individual.</TituloCredito>
-          <Imagen
-            tamano={lengths.large[1]}
-            imagen={creditoIndividualLogo}
-            alt='Crédito individual'
-          />
+          <CreditoIndividualLogo/>
           <Texto>Disfruta de tasas fijas durante todo el plazo de tu crédito. Además, te ofrecemos plazos flexibles de hasta 24 meses.</Texto>
           <Boton
             texto='Conoce más'
@@ -124,6 +116,11 @@ const ProductoContenedor = styled.div`
   transform: translateY(${({ $visible }) => ($visible ? '0' : '-10px')});
   transition: opacity 2s, transform 2s;
   width: ${lengths.large[3]};
+
+  svg {
+    color: ${colors.green};
+    width: ${lengths.large[1]};
+  }
 `;
 
 const TituloCredito = styled.h3`

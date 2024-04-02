@@ -5,7 +5,7 @@ import { CiInstagram, CiFacebook, CiTwitter } from 'react-icons/ci';
 import Imagen from './Imagen';
 import Entidad from './Footer/Entidad';
 import InformacionEntidades from './InformacionEntidades';
-import sacimexLogo from '../assets/img/SacimexLogoBlanco.png';
+import { ReactComponent as SacimexLogo } from '../assets/img/SacimexLogo.svg';
 import SolicitudAclaracionOpcionesSacimex from '../assets/documents/Solicitud-aclaracion-Opciones-Sacimex.pdf';
 import DatosEntidades from '../components/Footer/datosEntidades.json';
 import { colors, lengths, fontSizes } from '../utils/stylesRules';
@@ -34,12 +34,7 @@ const Footer = ({ setWindowState }) => {
           </li>
         ))}
       </AnimacionEntradaRedes>
-      <Imagen
-        tamano={lengths.large[2]}
-        imagen={sacimexLogo}
-        extras={`margin-bottom: ${lengths.medium[1]};`}
-        alt='Sacimex Logo'
-      />
+      <SacimexLogo className='logoFooter'/>
       <AcercaDeContenedor $textos>
         <TextosAcercaDeContenedor>
           <li>
@@ -156,6 +151,12 @@ const PrincipalContenedor = styled.footer`
   padding-top: ${lengths.medium[1]};
   position: relative;
   z-index: 100;
+
+  .logoFooter {
+    color: ${colors.white};
+    margin-bottom: ${lengths.medium[1]};
+    width: ${lengths.large[2]};
+  }
 `;
 
 const RedesContenedor = styled.ul`

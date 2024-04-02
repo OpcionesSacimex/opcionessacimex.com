@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Header from '../components/Header';
 import Titulo from '../components/Titulo';
-import Imagen from '../components/Imagen';
 import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import { EstilosGlobales, CentrarPrincipalContenedor } from '../utils/estilosPages';
-import Constructor from '../assets/img/Constructor.svg';
+import { ReactComponent as Constructor } from '../assets/img/Constructor.svg';
 import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const RedDeProfesionales = () => {
@@ -38,11 +37,7 @@ const RedDeProfesionales = () => {
         <PrincipalContenedor $mostrarAnimaciones={mostrarAnimaciones}>
           <Titulo texto='Red de oficios' />
           <ImagenTextoContenedor>
-            <Imagen
-              tamano='300px'
-              imagen={Constructor}
-              alt='Oficios y profesiones'
-            />
+            <Constructor/>
             <Parrafo>
               En <b>Opciones Sacimex</b>, creemos en la importancia de reconocer y respaldar las habilidades y conocimientos
               únicos que cada individuo aporta a su comunidad, es por eso que hemos decidido formalizar una red de las diversas
@@ -87,6 +82,10 @@ const ImagenTextoContenedor = styled.div`
   flex-wrap: wrap;
   gap: ${lengths.small[1]};
   justify-content: center;
+
+  svg {
+    width: 300px;
+  }
 `;
 
 const Parrafo = styled.p`

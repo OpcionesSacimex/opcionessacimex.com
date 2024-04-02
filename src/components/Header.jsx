@@ -2,9 +2,8 @@ import { useState } from 'react';
 import styled, {css} from 'styled-components';
 import { Link } from 'react-scroll';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-import Imagen from './Imagen';
 import Boton from './Boton';
-import sacimexLogoBlanco from '../assets/img/SacimexLogoBlanco.png';
+import { ReactComponent as SacimexLogo } from '../assets/img/SacimexLogo.svg';
 import { BloquearScroll } from '../utils/estilosPages';
 import LinksData from '../components/Header/Links.json';
 import { colors, lengths, fontSizes } from '../utils/stylesRules';
@@ -33,11 +32,7 @@ const Header = ({ mostrarAnimaciones, barraVerde }) => {
           href='/Inicio'
           $mostrarAnimaciones={mostrarAnimaciones}
         >
-          <Imagen
-            tamano={lengths.large[3]}
-            imagen={sacimexLogoBlanco}
-            alt='Sacimex Logo'
-          />
+          <SacimexLogo width={lengths.large[3]}/>
         </LogoContenedor>
         <BarraNavegacion $checked={isChecked}>
           <LinksContenedor>
@@ -99,6 +94,7 @@ const PrincipalContenedor = styled.header`
 `;
 
 const LogoContenedor = styled.a`
+  color: ${colors.white};
   cursor: pointer;
   margin: auto;
   opacity: ${({ $mostrarAnimaciones }) => ($mostrarAnimaciones ? '1' : '0')};

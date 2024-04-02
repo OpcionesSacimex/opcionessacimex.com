@@ -7,7 +7,7 @@ import Imagen from '../components/Imagen';
 import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import { EstilosGlobales, CentrarPrincipalContenedor } from '../utils/estilosPages';
-import Constructor from '../assets/img/Constructor.svg';
+import { ReactComponent as Constructor } from '../assets/img/Constructor.svg';
 import { colors, lengths, fontSizes } from '../utils/stylesRules';
 
 const HistoriasDeExito = () => {
@@ -38,11 +38,7 @@ const HistoriasDeExito = () => {
         <PrincipalContenedor $mostrarAnimaciones={mostrarAnimaciones}>
           <Titulo texto='Historias de éxito' />
           <ImagenTextoContenedor>
-            <Imagen
-              tamano='300px'
-              imagen={Constructor}
-              alt='Oficios y profesiones'
-            />
+            <Constructor/>
             <Parrafo>
               En <b>Opciones Sacimex</b>, creemos que cada trayectoria es un testimonio valioso. Por eso compartimos los
               logros alcanzados por nuestros clientes a través del tiempo. Únete a nosotros para celebrar estos
@@ -85,6 +81,10 @@ const ImagenTextoContenedor = styled.div`
   flex-wrap: wrap;
   gap: ${lengths.small[1]};
   justify-content: center;
+
+  svg {
+    width: 300px;
+  }
 `;
 
 const Parrafo = styled.p`
