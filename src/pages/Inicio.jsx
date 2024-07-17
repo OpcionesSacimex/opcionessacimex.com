@@ -10,6 +10,7 @@ import Sucursales from '../components/Inicio/Contacto';
 import Footer from '../components/Footer';
 import Ventana from '../components/Ventana';
 import { BloquearScroll } from '../utils/estilosPages';
+import { BolsaTrabajoPanel } from '../components/Inicio/BolsaTabajoPanel';
 
 const Inicio = () => {
   const [mostrarAnimaciones, setMostrarAnimaciones] = useState(false);
@@ -51,6 +52,7 @@ const Inicio = () => {
         <Presentacion mostrarAnimaciones={mostrarAnimaciones} />
         <Productos />
         <Conocenos />
+        <BolsaTrabajoPanel/>
         <Sucursales />
         <Footer setWindowState={setWindowState} />
         <Ventana windowState={windowState} setWindowState={setWindowState} />
